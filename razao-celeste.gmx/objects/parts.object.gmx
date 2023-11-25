@@ -67,8 +67,56 @@ part_type_alpha2( explosion,1,0);
 part_type_speed( explosion,0.20,0.20,0,0);
 part_type_direction( explosion,0,359,0,0);
 part_type_orientation( explosion,0,0,0,0,1);
-part_type_blend( explosion,1);
 part_type_life( explosion,10,10);
+part_type_blend(explosion,1);
+
+solarexplosion = part_type_create();
+part_type_shape(solarexplosion,pt_shape_flare);
+part_type_size(solarexplosion,.5,.5,0,0);
+part_type_alpha3(solarexplosion,0,1,0);
+part_type_colour1(solarexplosion,make_colour_rgb(255,128,0));
+part_type_speed(solarexplosion,.2,.2,0,0);
+part_type_direction(solarexplosion,0,359,0,0);
+part_type_life(solarexplosion,30,30);
+part_type_blend(solarexplosion,1);
+
+starsbackground = part_type_create();
+part_type_shape( starsbackground,pt_shape_flare);
+part_type_size( starsbackground,0.10,0.50,0.00,0);
+part_type_color1( starsbackground,16744448);
+part_type_alpha3( starsbackground,0,1,1);
+part_type_speed( starsbackground,2,10,0,0);
+part_type_direction( starsbackground,0,359,0,0);
+part_type_life( starsbackground,300,300);
+part_type_blend( starsbackground,1);
+
+menu1 = part_type_create();
+part_type_shape( menu1,pt_shape_disk);
+part_type_size( menu1,.1,.1,0,0);
+part_type_alpha3( menu1,0,1,0);
+part_type_speed( menu1,1,5,0,0);
+part_type_direction( menu1,180,180,0,5);
+part_type_life( menu1,50,50);
+part_type_blend( menu1,1);
+
+backparts = part_type_create();
+part_type_shape( backparts,pt_shape_flare);
+part_type_size( backparts,.2,.3,0,0);
+part_type_alpha3( backparts,0,1,0);
+part_type_speed( backparts,.1,.5,0,0);
+part_type_direction( backparts,0,359,0,5);
+part_type_blend( backparts,1);
+part_type_life( backparts,150,300);
+
+propparts = part_type_create();
+part_type_shape( propparts,pt_shape_flare);
+part_type_size( propparts,.1,.1,0,0);
+part_type_colour1( propparts,32511);
+part_type_alpha2( propparts,.2,0);
+part_type_speed( propparts,.1,.1,0,0);
+part_type_direction( propparts,0,360,0,5);
+part_type_life( propparts,10,10);
+part_type_blend( propparts,1);
 </string>
           </argument>
         </arguments>

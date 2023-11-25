@@ -1,8 +1,8 @@
 ///scr_pesquisar()
 if (Title != "") exit;
 if (sy.GUI != scr_pesquisar) {
-    var xx = sy.DW/2+24;
-    var yy = sy.DH-32;
+    var xx = DW/2+24;
+    var yy = DH-32;
     
     if (scr_buttonspr(xx,yy,spr_flask_blue,0,c_white,c_gray,1)) {
         DRA = -1;

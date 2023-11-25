@@ -3,24 +3,31 @@
   <caption></caption>
   <width>1</width>
   <height>1</height>
-  <vsnap>32</vsnap>
-  <hsnap>32</hsnap>
+  <vsnap>1</vsnap>
+  <hsnap>1</hsnap>
   <isometric>0</isometric>
   <speed>30</speed>
   <persistent>0</persistent>
-  <colour>0</colour>
+  <colour>2101248</colour>
   <showcolour>-1</showcolour>
   <code>if (instance_exists(sy)) exit;
 instance_create(0,0,sy);
 
-var c = make_colour_rgb(0,128,255);
 enum c_ {
     darkblue = 1048576,
-    skyblue = 16744448
+    skyblue = 16744448,
+    pink = 8339711,
+    whitepink = 11108351,
+    dkdkgray = 1315860
 }
 
-//   AdColony_Init("app id","zone id","");
+AdColony_Init("appb9aacd8becb94d5390","vzcd355909b6f34e6695","");
 //   gml_release_mode(true);
+
+globalvar M3D_ESFERA, M3D_FOBOS, M3D_DEIMOS;
+ M3D_FOBOS = ini_3dmodel_fobos();
+M3D_DEIMOS = ini_3dmodel_deimos();
+M3D_ESFERA = d3d_model_create(); d3d_model_ellipsoid(M3D_ESFERA,-1,-1,-1,1,1,1,1,1,18);
 
 room_goto(room0);</code>
   <enableViews>-1</enableViews>

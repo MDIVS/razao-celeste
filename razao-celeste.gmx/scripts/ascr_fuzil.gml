@@ -8,7 +8,7 @@ draw_sprite_ext(aspr_fuzil,0,xx,yy,.3,.3,dba[4],-1,image_alpha);
 var alvo = ascr_mirar( dba );
 if (alvo != -4 && dba[5] == 0) {
     disparar( dba, dspr_fuzil, dscr_fuzil );
-    PlaySom(snd1,0,sy.VSom,0);
+    PlaySom(snd1,0,VSom,0);
     dba[@ 5] = room_speed;
 } else {
     var dd = angle_difference(dba[3]+image_angle,dba[4]);

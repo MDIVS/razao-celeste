@@ -18,12 +18,12 @@
     <type>0</type>
   </types>
   <bitDepths>
-    <bitDepth>16</bitDepth>
+    <bitDepth>8</bitDepth>
   </bitDepths>
   <preload>-1</preload>
   <data>sound4.wav</data>
-  <compressed>0</compressed>
+  <compressed>1</compressed>
   <streamed>0</streamed>
-  <uncompressOnLoad>0</uncompressOnLoad>
+  <uncompressOnLoad>1</uncompressOnLoad>
   <audioGroup>0</audioGroup>
 </sound>

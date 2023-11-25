@@ -1,26 +1,17 @@
 with(obj_planet) scr_planetgui();
+with(obj_pbs01) if GUI!=-1script_execute(GUI);
+with(obj_pee) if GUI!=-1script_execute(GUI);
+with(obj_pmg) gui_pmg();
+//with(obj_ppeao)if GUI!=-1script_execute(GUI);
+//with(obj_ipeao) if GUI!=-1script_execute(GUI);
+with(obj_iss02) if GUI!=-1script_execute(GUI);
 
-with(Player) {
-    if (GUI != -1) {script_execute(GUI)} else if (object_index != obj_pbs01) {
-        var p = PLANETA; //corpo celeste
-        if (point_distance(x,y,p.x,p.y) > sy.DH/2) {
-            x += lengthdir_x(.5,point_direction(x,y,p.x,p.y));
-            y += lengthdir_y(.5,point_direction(x,y,p.x,p.y));
-        }
-        x += lengthdir_x(.5,point_direction(x,y,p.x,p.y)+90);
-        y += lengthdir_y(.5,point_direction(x,y,p.x,p.y)+90);
-        image_index++;
-    }
-}
-
-draw_recursos();
-script_execute(CNTR[0]);
-script_execute(PESQ[0]);
-scr_onda();
+scr_construcao();
+//script_execute(PESQ[0]);
 scr_view();
 
 if (instance_number(obj_nvinimigo) == 0) Title = "VITÓRIA";
-if (Player.Vida[0] <= 0) Title = "DERROTA";
+if !instance_exists(obj_nvplayer) Title = "DERROTA";
 if (Title == "VITÓRIA") {
     draw_set_alpha(.5);
     draw_rectangle_colour(32,32,DW-32,DH-32,0,0,0,0,0);
@@ -32,10 +23,11 @@ if (Title == "VITÓRIA") {
         with(all) {
             if (!persistent) instance_destroy();
         };
+        VIEW_OBJECT=-1;
         DRA = -1;
         GUI = scr_menu;
         Title = "";
-        Now[0] = 0; Now[1] = 0; Now[2] = 0; Now[3] = 0;
+        Now[0] = 0; Now[1] = 1; Now[2] = 0; Now[3] = 0;
     }
 }
 if (Title == "DERROTA") {
@@ -49,9 +41,13 @@ if (Title == "DERROTA") {
         with(all) {
             if (!persistent) instance_destroy();
         };
+        VIEW_OBJECT=-1;
         DRA = -1;
         GUI = scr_menu;
         Title = "";
-        Now[0] = 0; Now[1] = 0; Now[2] = 0; Now[3] = 0;
+        Now[0] = 0; Now[1] = 1; Now[2] = 0; Now[3] = 0;
     }
 }
+
+if Bspr(MA,spr_pause,0,DW-48,48){Now[1]=-3;Now[2]=gui_pause;Now[3]=scr_sydra;PlaySom(sound1,0,VSom,0)}
+Now[0]=min(30,Now[0]+Now[1]);if Now[0]<0{DRA=-1;GUI=Now[2];Now[0]=0;Now[1]=3;Now[2]=0}

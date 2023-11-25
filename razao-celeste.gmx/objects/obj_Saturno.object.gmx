@@ -42,7 +42,7 @@ PosEstelar = 6;
 Gravidade = "10,44 m/s²";
 Pressao = "1 bar";
 Temperatura = "-139 °C";
-Raio = "69.911 km";
+Raio = "58.232 km";
 
 Atmosfera[0,0] = "?";
 Atmosfera[0,1] = "DESCONHECIDO";

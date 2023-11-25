@@ -31,6 +31,7 @@ Mae = -4;
 Alvo = -4;
 Inimigo = obj_nvinimigo;
 Nome = "Peão";
+Construivel=0;
 
 Arma = add_weapon(0,8,0,0,ascr_fixfuzil,Inimigo);
 Prop = add_prop(0,7,180,0,10,1);

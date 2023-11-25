@@ -53,8 +53,8 @@ add_port(Port,4,180,obj_ppeao,c_white);
 add_port(Port,12,180,obj_ppeao,c_white);
 
 Weap = ini_weaponsy();
-add_weapon(Weap,18,15,0,ascr_mousefuzil,obj_nvinimigo);
-add_weapon(Weap,18,345,0,ascr_mousefuzil,obj_nvinimigo);
+add_weapon(Weap,18,15,0,-1,obj_nvinimigo);
+add_weapon(Weap,18,345,0,-1,obj_nvinimigo);
 add_weapon(Weap,10,60,75,-1,obj_nvinimigo);
 add_weapon(Weap,10,300,285,-1,obj_nvinimigo);
 add_weapon(Weap,12,120,120,-1,obj_nvinimigo);

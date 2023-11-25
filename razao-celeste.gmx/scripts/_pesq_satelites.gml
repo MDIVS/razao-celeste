@@ -1,8 +1,8 @@
 ///_pesq_satelites()
 if (Title != "") exit;
 
-var xx = sy.DW/2+24;
-var yy = sy.DH-32;
+var xx = DW/2+24;
+var yy = DH-32;
 
 if (scr_buttonspr(xx,yy,spr_flask_blue,0,c_gray,c_dkgray,1)) {
     DRA=-1; GUI = gui_satelites_pesquisando;
@@ -32,5 +32,5 @@ if (PESQ[1] == PESQ[2]) {
     PESQ[0]=scr_pesquisar; PESQ[1]=0; PESQ[2]=0;
     ini_open("Salvo.ini"); ini_write_real("PESQ","satelites "+string(PLANETA.Nome),1); ini_close();
     image_index = 0;
-    PlaySom(sound3,0,sy.VSom,0);
+    PlaySom(sound3,0,VSom,0);
 }

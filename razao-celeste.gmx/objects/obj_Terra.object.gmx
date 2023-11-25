@@ -27,7 +27,6 @@
             <kind>1</kind>
             <string>event_inherited();
 DRA=-1; GUI=-1;
-O = mi_001_act;
 
 TEXTURA = background_get_texture(tx_terra);
 RAIO = 6.378*10;

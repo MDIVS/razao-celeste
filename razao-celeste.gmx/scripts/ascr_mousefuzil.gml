@@ -13,7 +13,7 @@ if (MdD != -1) {
 
 if (dba[5] == 0 && abs(dd)<=8) {
     disparar( dba, dspr_fuzil, dscr_fuzil );
-    PlaySom(snd1,0,sy.VSom,0);
+    PlaySom(snd1,0,VSom,0);
     dba[@ 5] = room_speed/2;
 } else {
     var dd = angle_difference(dba[3]+image_angle,dba[4]);

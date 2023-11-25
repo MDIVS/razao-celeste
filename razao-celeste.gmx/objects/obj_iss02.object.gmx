@@ -46,7 +46,7 @@ add_weapon(Weap,12*.3,0,0,ascr_fuzil,obj_nvplayer);
 
 Vida[0] = 15;
 Vida[1] = 15;
-Vida[2] = .011;
+Vida[2] = 0;
 
 //Speed = 0;
 Spd[0] = 0;

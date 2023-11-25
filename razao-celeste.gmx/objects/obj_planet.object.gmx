@@ -26,7 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>Satelites[0] = -1; //n° de satélites
-O = -1; //script de ondas
 </string>
           </argument>
         </arguments>

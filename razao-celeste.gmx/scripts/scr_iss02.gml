@@ -1,15 +1,11 @@
 ///scr_iss02()
-if (Vida[0] < 0) {
-    instance_destroy();
-    exit;
-}
-
 draw_self();
-scr_weaponsy(Weap);
-scr_portos(Port);
-scr_propsy(Prop);
-
+if Vida[0]<=0 {instance_destroy();exit};
 Vida[0] = min(Vida[1],Vida[0]+Vida[2]);
+
+scr_weaponsy(Weap);
+//scr_portos(Port);
+scr_propsy(Prop);
 
 var add = -1, alvo = -4;
 alvo = get_pxinimigo(x,y,obj_nvplayer);

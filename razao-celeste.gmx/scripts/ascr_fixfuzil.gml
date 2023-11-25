@@ -14,7 +14,7 @@ if (dba[5] == 0) {
     if (alvo != -4) {
         if (collision_line(xx,yy,xx+lengthdir_x(240,dba[@ 4]),yy+lengthdir_y(240,dba[@ 4]),alvo,1,1)) {
             disparar( dba, dspr_fuzil, dscr_fuzil );
-            PlaySom(snd1,0,sy.VSom,0);
+            PlaySom(snd1,0,VSom,0);
             dba[@ 5] = room_speed;
         }
     }

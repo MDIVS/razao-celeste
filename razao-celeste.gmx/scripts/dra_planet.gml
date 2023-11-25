@@ -10,14 +10,14 @@ var surf = surface_create(rr*2,rr*2);
 surface_set_target(surf);
 draw_clear_alpha(0,0);
 d3d_start();
-//d3d_transform_set_identity();
-//d3d_set_hidden(0);
-//d3d_set_culling(0);
-
-d3d_set_projection(lengthdir_x(1,d1),lengthdir_y(1,d1),lengthdir_y(1,d2),0,0,0,0,0,1);
-d3d_draw_ellipsoid(-rr,-rr,-rr,rr,rr,rr,tx,1,1,24);
+d3d_set_projection_ortho(-rr,-rr,rr*2,rr*2,0);
+d3d_transform_set_scaling(rr,rr,rr);
+d3d_transform_add_rotation_x(d2); //angulação de eixo
+d3d_transform_add_rotation_z(d1); //movimento de rotação
+d3d_transform_add_rotation_x(90); //angulação de perspectiva
+d3d_model_draw(M3D_ESFERA,0,0,0,tx);
 d3d_transform_set_identity();
 d3d_end();
 surface_reset_target();
-draw_surface_ext(surf,xx-rr,yy-rr,1/argument[3],1/argument[3],0,c_white,1);
+draw_surface(surf,xx-rr,yy-rr);
 surface_free(surf);

@@ -10,5 +10,6 @@ if (point_distance(x,y,GoX,GoY) > sprite_width) {
 } else {Spd[0] = max(0,Spd[0]-Spd[2])};
 
 if (VIEW_OBJECT == id) {
-    DrawCircle(GoX,GoY,8,c_orange,c_orange,1,1,12,3);
+    DrawCircle(GoX,GoY,6,16743936,16743936,1,1,12,2);
+    DrawCircle(GoX,GoY,2,16743936,16743936,1,1,8,2);
 }
