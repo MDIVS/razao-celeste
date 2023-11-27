@@ -1,0 +1,14 @@
+var ic = instance_create(DW/5*1,DH/2,obj_quiz_alternativa);
+ic.Correta = 0;
+ic.Txt = "Júpiter";
+ic = instance_create(DW/5*2,DH/2,obj_quiz_alternativa);
+ic.Correta = 0;
+ic.Txt = "Urano";
+ic = instance_create(DW/5*3,DH/2,obj_quiz_alternativa);
+ic.Correta = 1;
+ic.Txt = "Saturno";
+ic = instance_create(DW/5*4,DH/2,obj_quiz_alternativa);
+ic.Correta = 0;
+ic.Txt = "Netuno";
+ic = instance_create(DW/2,DH/4,obj_quiz_confirmar);
+ic.Txt = "O foguete que levou os primeiros astronautas para a Lua tinha 111 metros de altura (aproximadamente a altura de um prédio de 37 andares), era de 3 estágios e pesava quase 3 mil toneladas. Com sua enorme quantidade de energia, levou a espaçonave Apollo 11 à velocidade próxima dos 40 mil km/h. Esse foguete tinha o nome de um grande planeta que tem grandes anéis. Qual era o nome do foguete?";

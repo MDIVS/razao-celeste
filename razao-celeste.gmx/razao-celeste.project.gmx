@@ -3,6 +3,7 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
+  <datafiles number="1" name="datafiles"/>
   <NewExtensions>
     <extension index="0">extensions\AdColonyExtension</extension>
   </NewExtensions>
@@ -15,46 +16,96 @@
       <sound>sound\sound4</sound>
       <sound>sound\snd_wrong</sound>
       <sound>sound\snd_correct</sound>
+      <sound>sound\snd_GameOver</sound>
+      <sound>sound\snd_win</sound>
     </sounds>
     <sounds name="guns">
+      <sound>sound\snd_shield</sound>
       <sound>sound\snd1</sound>
     </sounds>
     <sounds name="BMus">
       <sound>sound\bmus_ivan_0</sound>
       <sound>sound\bmus_ivan_1</sound>
     </sounds>
+    <sound>sound\test</sound>
+    <sounds name="vozes">
+      <sound>sound\voz_mercurio</sound>
+      <sound>sound\voz_venus</sound>
+      <sound>sound\voz_terra</sound>
+      <sound>sound\voz_marte</sound>
+    </sounds>
   </sounds>
   <sprites name="sprites">
+    <sprites name="menu">
+      <sprite>sprites\spr_bedit</sprite>
+      <sprite>sprites\spr_bquiz</sprite>
+      <sprite>sprites\spr_bsosy</sprite>
+      <sprite>sprites\spr_bcamp</sprite>
+      <sprite>sprites\spr_bconf</sprite>
+      <sprite>sprites\spr_bconq</sprite>
+    </sprites>
+    <sprites name="quiz">
+      <sprite>sprites\bcontinuar</sprite>
+      <sprite>sprites\brr192x192</sprite>
+      <sprite>sprites\bfalso</sprite>
+      <sprite>sprites\bverdadeiro</sprite>
+      <sprite>sprites\bddw</sprite>
+      <sprite>sprites\bddc</sprite>
+      <sprite>sprites\spr_sputnik</sprite>
+      <sprite>sprites\spr_saturnV</sprite>
+      <sprite>sprites\spr_quizquestion2</sprite>
+      <sprite>sprites\spr_quizsetax96</sprite>
+    </sprites>
     <sprites name="GUI">
-      <sprite>sprites\spr_engrenagem</sprite>
-      <sprite>sprites\spr_flask_blue</sprite>
       <sprite>sprites\spr_ferramenta</sprite>
-      <sprite>sprites\spr_coin</sprite>
       <sprite>sprites\spr_zoom</sprite>
+      <sprite>sprites\spr_flask_blue</sprite>
+      <sprite>sprites\spr_cadeado</sprite>
+      <sprite>sprites\spr_unitaddbutton</sprite>
+      <sprite>sprites\spr_minitrofeu</sprite>
       <sprite>sprites\spr_home</sprite>
       <sprite>sprites\spr_minitriangle</sprite>
       <sprite>sprites\spr_astrocoin</sprite>
-      <sprite>sprites\spr_timer</sprite>
       <sprite>sprites\spr_cnstr</sprite>
+      <sprite>sprites\spr_timer</sprite>
       <sprite>sprites\spr_pause</sprite>
       <sprite>sprites\spr_play</sprite>
+      <sprite>sprites\spr_coracao</sprite>
+      <sprite>sprites\spr_try</sprite>
+      <sprite>sprites\spr_select</sprite>
+      <sprite>sprites\spr_seta</sprite>
+      <sprite>sprites\spr_srp</sprite>
+      <sprite>sprites\spr_box</sprite>
+      <sprite>sprites\spr_dropbox</sprite>
+      <sprite>sprites\spr_propbutton</sprite>
+      <sprite>sprites\spr_hand</sprite>
+      <sprite>sprites\sPlay</sprite>
+      <sprite>sprites\spr_back</sprite>
     </sprites>
     <sprites name="SpaceShips">
+      <sprites name="Vespa">
+        <sprite>sprites\sVespa1</sprite>
+        <sprite>sprites\sVespaGun</sprite>
+        <sprite>sprites\sVespa_body</sprite>
+        <sprite>sprites\sVespa_asa</sprite>
+        <sprite>sprites\sVespa_prop</sprite>
+        <sprite>sprites\sVespa_gun</sprite>
+        <sprite>sprites\sVespa_ext</sprite>
+      </sprites>
       <sprite>sprites\spr_pbs01</sprite>
       <sprite>sprites\spr_pee</sprite>
       <sprite>sprites\ico_pee</sprite>
       <sprite>sprites\spr_pmg</sprite>
       <sprite>sprites\ico_pmg</sprite>
-      <sprite>sprites\spr_ss02</sprite>
-      <sprite>sprites\glw_ss02</sprite>
-      <sprite>sprites\spr_invmedia</sprite>
+      <sprite>sprites\spr_imp</sprite>
+      <sprite>sprites\spr_img</sprite>
       <sprite>sprites\spr_ipeao</sprite>
       <sprite>sprites\spr_ppeao</sprite>
-      <sprite>sprites\spr_spaceship128</sprite>
-      <sprite>sprites\spr_spaceship256</sprite>
-      <sprites name="propulsores">
-        <sprite>sprites\spr_propulsor01</sprite>
-        <sprite>sprites\spr_propulsor01_large</sprite>
+      <sprite>sprites\sprite46</sprite>
+      <sprites name="Small">
+        <sprite>sprites\sml_imp</sprite>
+        <sprite>sprites\sml_img</sprite>
+        <sprite>sprites\sml_pmg</sprite>
       </sprites>
     </sprites>
     <sprites name="Pilares">
@@ -66,19 +117,34 @@
         <sprite>sprites\dspr_fuzil</sprite>
         <sprite>sprites\aspr_fuzil</sprite>
         <sprite>sprites\aspr_laser</sprite>
+        <sprite>sprites\aspr_shield</sprite>
         <sprite>sprites\aspr_none</sprite>
       </sprites>
       <sprites name="Construcao">
         <sprite>sprites\spr_laser</sprite>
         <sprite>sprites\spr_fuzil</sprite>
+        <sprite>sprites\spr_shield</sprite>
       </sprites>
     </sprites>
     <sprite>sprites\spr_spacegarbage</sprite>
     <sprite>sprites\spr_asteroid</sprite>
-    <sprite>sprites\sprite42</sprite>
-    <sprites name="logos">
-      <sprite>sprites\LOGOFEBRACE17</sprite>
-      <sprite>sprites\LOGO9EJC</sprite>
+    <sprite>sprites\spr_folha</sprite>
+    <sprite>sprites\spr_minifolha</sprite>
+    <sprites name="astros">
+      <sprite>sprites\spr_sol</sprite>
+      <sprite>sprites\spr_simbols</sprite>
+    </sprites>
+    <sprite>sprites\spr_quizquestion10</sprite>
+    <sprites name="persons">
+      <sprite>sprites\spr_she1</sprite>
+      <sprite>sprites\bspr_confirm</sprite>
+      <sprite>sprites\bspr_back</sprite>
+      <sprite>sprites\iAgente9</sprite>
+      <sprite>sprites\iPiter</sprite>
+      <sprite>sprites\iSouza</sprite>
+    </sprites>
+    <sprites name="Campanha">
+      <sprite>sprites\sBTutorial</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -113,24 +179,65 @@
     <path>paths\path0</path>
   </paths>
   <scripts name="scripts">
+    <script>scripts\scr_menu.gml</script>
+    <scripts name="QUIZ">
+      <scripts name="Introdução">
+        <script>scripts\quiz_introducao.gml</script>
+      </scripts>
+      <scripts name="Atmosfera">
+        <script>scripts\quiz_atmosfera.gml</script>
+      </scripts>
+      <scripts name="Satelites">
+        <script>scripts\quiz_satelites.gml</script>
+      </scripts>
+      <script>scripts\quizback.gml</script>
+      <scripts name="MULTIJOGADOR">
+        <scripts name="Duas equipes">
+          <script>scripts\quizmultiplayer_inicio.gml</script>
+          <script>scripts\quizquestion1.gml</script>
+          <script>scripts\quizquestion2.gml</script>
+          <script>scripts\quizquestion3.gml</script>
+          <script>scripts\quizquestion4.gml</script>
+          <script>scripts\quizquestion5.gml</script>
+          <script>scripts\quizquestion6.gml</script>
+          <script>scripts\quizquestion7.gml</script>
+          <script>scripts\quizquestion8.gml</script>
+          <script>scripts\quizquestion9.gml</script>
+          <script>scripts\quizquestion10.gml</script>
+          <script>scripts\quizquestion11.gml</script>
+          <script>scripts\quizquestion12.gml</script>
+          <script>scripts\quizquestion13.gml</script>
+          <script>scripts\quizquestion14.gml</script>
+          <script>scripts\quizquestion15.gml</script>
+          <script>scripts\quizquestion16.gml</script>
+          <script>scripts\quizquestion17.gml</script>
+          <script>scripts\quizmultiplayer_fim.gml</script>
+        </scripts>
+      </scripts>
+    </scripts>
+    <script>scripts\scr_sistema_solar.gml</script>
+    <scripts name="algebra">
+      <script>scripts\tinc.gml</script>
+    </scripts>
+    <script>scripts\ini_teluricosview.gml</script>
+    <script>scripts\ini_gasososview.gml</script>
+    <script>scripts\ini_quiz_mercurio.gml</script>
+    <scripts name="Menu">
+      <script>scripts\scr_config.gml</script>
+      <script>scripts\create_my_enemyes.gml</script>
+      <scripts name="Creditos">
+        <script>scripts\scr_creditos.gml</script>
+        <script>scripts\scr_menu_millionthvector.gml</script>
+        <script>scripts\scr_menu_jorge.gml</script>
+        <script>scripts\scr_menu_maicon.gml</script>
+      </scripts>
+      <scripts name="Biblioteca">
+        <script>scripts\ini_biblioteca.gml</script>
+      </scripts>
+      <script>scripts\ini_conquistas.gml</script>
+    </scripts>
     <scripts name="Sistema Solar">
-      <script>scripts\scr_sistema_solar.gml</script>
-      <script>scripts\menu_Sol.gml</script>
-      <scripts name="Teluricos">
-        <script>scripts\ini_teluricosview.gml</script>
-        <script>scripts\menu_Mercurio.gml</script>
-        <script>scripts\menu_Venus.gml</script>
-        <script>scripts\menu_Terra.gml</script>
-        <script>scripts\menu_Marte.gml</script>
-      </scripts>
-      <scripts name="Gasosos">
-        <script>scripts\ini_gasososview.gml</script>
-        <script>scripts\menu_Jupiter.gml</script>
-        <script>scripts\menu_Saturno.gml</script>
-        <script>scripts\menu_Urano.gml</script>
-        <script>scripts\menu_Netuno.gml</script>
-      </scripts>
-      <script>scripts\ini_Exploration.gml</script>
+      <script>scripts\ini_menuSol.gml</script>
       <scripts name="orbitas 3d">
         <script>scripts\ss3dview_mercurio.gml</script>
         <script>scripts\ss3dview_venus.gml</script>
@@ -143,55 +250,16 @@
         <script>scripts\ss3dview_netuno.gml</script>
         <script>scripts\ss3dview_sol.gml</script>
       </scripts>
-    </scripts>
-    <scripts name="Principal">
-      <script>scripts\scr_intro.gml</script>
-      <scripts name="Menu">
-        <script>scripts\scr_menu.gml</script>
-        <script>scripts\navescreen.gml</script>
-        <scripts name="Constelação">
-          <script>scripts\scr_menu_constelacoes.gml</script>
-          <script>scripts\scr_menu_constelacoes_puzzle.gml</script>
-          <script>scripts\puzzle_andromeda.gml</script>
-        </scripts>
-        <script>scripts\scr_config.gml</script>
-        <script>scripts\create_my_enemyes.gml</script>
-        <scripts name="Creditos">
-          <script>scripts\scr_menu_creditos.gml</script>
-          <script>scripts\scr_menu_ivan.gml</script>
-          <script>scripts\scr_menu_millionthvector.gml</script>
-          <script>scripts\scr_menu_jorge.gml</script>
-          <script>scripts\scr_menu_maicon.gml</script>
-        </scripts>
-      </scripts>
-      <script>scripts\scr_sydra.gml</script>
-      <script>scripts\scr_sygui.gml</script>
-      <script>scripts\scr_debug.gml</script>
-      <script>scripts\gui_pause.gml</script>
+      <script>scripts\ini_guicinturao.gml</script>
+      <script>scripts\ini_guioort.gml</script>
     </scripts>
     <scripts name="Simulado OBA">
-      <script>scripts\OBA_selectalevel.gml</script>
+      <script>scripts\ini_quizoba.gml</script>
       <scripts name="Astronomia">
-        <script>scripts\SOBAAstronomia.gml</script>
+        <script>scripts\ini_SOBAAstronomia.gml</script>
         <scripts name="Nivel 1">
           <script>scripts\OBA_ASTRONOMIA1.gml</script>
-          <script>scripts\OBA_ASTRONOMIA1_001.gml</script>
-          <script>scripts\OBA_ASTRONOMIA1_002.gml</script>
-          <script>scripts\OBA_ASTRONOMIA1_003.gml</script>
-          <script>scripts\OBA_ASTRONOMIA1_004.gml</script>
-          <script>scripts\OBA_ASTRONOMIA1_005.gml</script>
-          <script>scripts\OBA_ASTRONOMIA1_006.gml</script>
-          <script>scripts\OBA_ASTRONOMIA1_007.gml</script>
-          <script>scripts\OBA_ASTRONOMIA1_008.gml</script>
-          <script>scripts\OBA_ASTRONOMIA1_009.gml</script>
-          <script>scripts\OBA_ASTRONOMIA1_010.gml</script>
-          <script>scripts\OBA_ASTRONOMIA1_011.gml</script>
-          <script>scripts\OBA_ASTRONOMIA1_012.gml</script>
-          <script>scripts\OBA_ASTRONOMIA1_013.gml</script>
-          <script>scripts\OBA_ASTRONOMIA1_014.gml</script>
-          <script>scripts\OBA_ASTRONOMIA1_015.gml</script>
           <script>scripts\OBA_ASTRONOMIA1_016.gml</script>
-          <script>scripts\OBA_ASTRONOMIA1_017.gml</script>
           <script>scripts\OBA_ASTRONOMIA1_018.gml</script>
           <script>scripts\OBA_ASTRONOMIA1_019.gml</script>
           <script>scripts\OBA_ASTRONOMIA1_020.gml</script>
@@ -201,7 +269,7 @@
         </scripts>
       </scripts>
       <scripts name="Astronáutica">
-        <script>scripts\SOBAAstronautica.gml</script>
+        <script>scripts\ini_SOBAAstronautica.gml</script>
         <scripts name="Nivel 1">
           <script>scripts\OBA_ASTRONAUTICA1.gml</script>
           <script>scripts\OBA_ASTRONAUTICA1_001.gml</script>
@@ -222,23 +290,83 @@
           <script>scripts\OBA_ASTRONAUTICA1_PULAR.gml</script>
         </scripts>
       </scripts>
+      <scripts name="000 - Rotacao Terrestre">
+        <script>scripts\SOBA_000.gml</script>
+        <script>scripts\SOBA_001.gml</script>
+        <script>scripts\SOBA_002.gml</script>
+        <script>scripts\SOBA_003.gml</script>
+        <script>scripts\SOBA_004.gml</script>
+        <script>scripts\SOBA_005.gml</script>
+        <script>scripts\SOBA_006.gml</script>
+        <script>scripts\SOBA_007.gml</script>
+        <script>scripts\SOBA_008.gml</script>
+      </scripts>
+      <scripts name="010 - Translacao Terrestre">
+        <script>scripts\SOBA_010.gml</script>
+        <script>scripts\SOBA_011.gml</script>
+        <script>scripts\SOBA_012.gml</script>
+        <script>scripts\SOBA_013.gml</script>
+        <script>scripts\SOBA_014.gml</script>
+        <script>scripts\SOBA_015.gml</script>
+        <script>scripts\SOBA_016.gml</script>
+        <script>scripts\SOBA_017.gml</script>
+      </scripts>
+      <scripts name="020 - Lua Terrestre">
+        <script>scripts\SOBA_020.gml</script>
+        <script>scripts\SOBA_021.gml</script>
+        <script>scripts\SOBA_022.gml</script>
+        <script>scripts\SOBA_023.gml</script>
+        <script>scripts\SOBA_024.gml</script>
+        <script>scripts\SOBA_025.gml</script>
+        <script>scripts\SOBA_026.gml</script>
+        <script>scripts\SOBA_027.gml</script>
+        <script>scripts\SOBA_028.gml</script>
+      </scripts>
+      <scripts name="030 - Sol">
+        <script>scripts\SOBA_030.gml</script>
+        <script>scripts\SOBA_031.gml</script>
+        <script>scripts\SOBA_032.gml</script>
+        <script>scripts\SOBA_033.gml</script>
+        <script>scripts\SOBA_034.gml</script>
+      </scripts>
       <script>scripts\SOBA_get_question.gml</script>
     </scripts>
     <scripts name="Extensoes">
       <scripts name="Botões">
-        <script>scripts\BAstrocoin.gml</script>
         <script>scripts\BTimer.gml</script>
+        <script>scripts\BCoracao.gml</script>
         <scripts name="Botao Android Universal Comum">
           <script>scripts\B1.gml</script>
           <script>scripts\B2.gml</script>
           <script>scripts\B3.gml</script>
           <script>scripts\B4.gml</script>
           <script>scripts\B5.gml</script>
+          <script>scripts\B6.gml</script>
         </scripts>
         <scripts name="Botão Android Universal Especial">
           <script>scripts\BTech.gml</script>
+          <script>scripts\BPlanet.gml</script>
+          <script>scripts\BFase.gml</script>
+          <script>scripts\BPoliSpr.gml</script>
           <script>scripts\Bspr.gml</script>
           <script>scripts\BTouchToContinue.gml</script>
+          <scripts name="Joystick">
+            <script>scripts\ini_Joystick.gml</script>
+            <script>scripts\scr_Joystick.gml</script>
+            <script>scripts\Joys_x.gml</script>
+            <script>scripts\Joys_y.gml</script>
+            <script>scripts\Joys_r.gml</script>
+            <script>scripts\Joys_c1.gml</script>
+            <script>scripts\Joys_c2.gml</script>
+            <script>scripts\Joys_alpha.gml</script>
+            <script>scripts\Joys_device.gml</script>
+            <script>scripts\Joys_direction.gml</script>
+            <script>scripts\Joys_distance.gml</script>
+          </scripts>
+          <scripts name="Botão Propulsor">
+            <script>scripts\ini_BtPrplsr.gml</script>
+            <script>scripts\scr_BtPrplsr.gml</script>
+          </scripts>
         </scripts>
       </scripts>
       <scripts name="MDIVS Android">
@@ -256,61 +384,42 @@
         <script>scripts\BotaoCircle_txtspr.gml</script>
         <script>scripts\Botao3D_rect.gml</script>
       </scripts>
-      <scripts name="Draw">
-        <script>scripts\DrawCircle.gml</script>
-        <script>scripts\DrawCircle_ext.gml</script>
-        <script>scripts\DrawEllipse.gml</script>
-        <script>scripts\DrawCorrente.gml</script>
-        <script>scripts\draw_lightning.gml</script>
-        <script>scripts\DrawCurva.gml</script>
-        <script>scripts\InvCor.gml</script>
-        <script>scripts\DrawQuadrangulo.gml</script>
-      </scripts>
       <scripts name="Scripts of Sprites">
         <script>scripts\dra_Toque.gml</script>
       </scripts>
       <script>scripts\popup_create.gml</script>
-      <script>scripts\PlaySom.gml</script>
-      <script>scripts\step_window.gml</script>
       <scripts name="Camera 3D">
         <script>scripts\ini_cam3d.gml</script>
         <script>scripts\cam3d_ctrlscreen.gml</script>
         <script>scripts\cam3d_set_projection.gml</script>
         <script>scripts\cam3d_destroy.gml</script>
       </scripts>
+      <script>scripts\PlaySom.gml</script>
+      <script>scripts\voz.gml</script>
+      <scripts name="orbitas">
+        <scripts name="2d">
+          <script>scripts\draw_orbita.gml</script>
+          <script>scripts\draw_orbita_names.gml</script>
+          <script>scripts\draw_orbita_distances.gml</script>
+          <script>scripts\draw_orbita_days.gml</script>
+          <script>scripts\draw_orbita_planets.gml</script>
+        </scripts>
+      </scripts>
+      <script>scripts\reset_to_update.gml</script>
+      <script>scripts\tourl.gml</script>
+      <script>scripts\Bspr2.gml</script>
+      <scripts name="arrays scripts">
+        <script>scripts\array_remove_element.gml</script>
+        <script>scripts\array2d_remove_element.gml</script>
+      </scripts>
+      <script>scripts\ini_solidbutton.gml</script>
     </scripts>
     <scripts name="Pilares">
-      <script>scripts\scrs_construcao.gml</script>
       <script>scripts\scrs_planeta.gml</script>
       <scripts name="Portos">
         <script>scripts\ini_portsy.gml</script>
         <script>scripts\add_port.gml</script>
         <script>scripts\scr_portos.gml</script>
-      </scripts>
-      <scripts name="Naves">
-        <script>scripts\dra_pee.gml</script>
-        <script>scripts\dra_pmg.gml</script>
-        <script>scripts\scr_iss02.gml</script>
-        <script>scripts\scr_invmenor.gml</script>
-        <scripts name="IA's">
-          <script>scripts\get_pxinimigo.gml</script>
-          <scripts name="Peao">
-            <script>scripts\ia_peao.gml</script>
-            <script>scripts\ia_peao_seguirmae.gml</script>
-            <script>scripts\ia_peao_atacar.gml</script>
-            <script>scripts\ia_peao_solto.gml</script>
-            <script>scripts\ia_peao_divergente.gml</script>
-          </scripts>
-        </scripts>
-        <scripts name="Player Base Stations">
-          <scripts name="PBS 01">
-            <script>scripts\scr_pbs01.gml</script>
-          </scripts>
-          <scripts name="act">
-            <script>scripts\trajetoriaorbital.gml</script>
-            <script>scripts\act_fixinpoint.gml</script>
-          </scripts>
-        </scripts>
       </scripts>
       <scripts name="Weapons">
         <script>scripts\ini_weaponsy.gml</script>
@@ -320,12 +429,14 @@
         <script>scripts\scr_weaponsy.gml</script>
         <script>scripts\ascr_mirar.gml</script>
         <script>scripts\disparar.gml</script>
-        <script>scripts\ascr_fuzil.gml</script>
-        <script>scripts\ascr_mousefuzil.gml</script>
+        <scripts name="armas">
+          <script>scripts\ascr_fuzil.gml</script>
+          <script>scripts\ascr_mousefuzil.gml</script>
+          <script>scripts\ascr_fixfuzil.gml</script>
+          <script>scripts\ascr_laser.gml</script>
+          <script>scripts\ascr_shield.gml</script>
+        </scripts>
         <script>scripts\dscr_fuzil.gml</script>
-        <script>scripts\ascr_laser.gml</script>
-        <script>scripts\dscr_laser.gml</script>
-        <script>scripts\ascr_fixfuzil.gml</script>
         <script>scripts\weapon_get_sprite.gml</script>
       </scripts>
       <scripts name="Propulsores">
@@ -380,7 +491,6 @@
         <script>scripts\scr_view.gml</script>
         <script>scripts\zoombutton.gml</script>
         <script>scripts\ctrlviewmouse.gml</script>
-        <script>scripts\ini_view.gml</script>
         <scripts name="Select system">
           <script>scripts\selectaobject.gml</script>
         </scripts>
@@ -389,57 +499,79 @@
         <script>scripts\dra_planet.gml</script>
         <script>scripts\dra_model3d.gml</script>
       </scripts>
-      <scripts name="Player">
-        <script>scripts\dra_player.gml</script>
-        <script>scripts\gui_player.gml</script>
-        <scripts name="Joystick">
-          <script>scripts\ini_Joystick.gml</script>
-          <script>scripts\scr_Joystick.gml</script>
-          <script>scripts\Joys_x.gml</script>
-          <script>scripts\Joys_y.gml</script>
-          <script>scripts\Joys_r.gml</script>
-          <script>scripts\Joys_c1.gml</script>
-          <script>scripts\Joys_c2.gml</script>
-          <script>scripts\Joys_alpha.gml</script>
-          <script>scripts\Joys_device.gml</script>
-          <script>scripts\Joys_direction.gml</script>
-          <script>scripts\Joys_distance.gml</script>
+      <scripts name="IA's">
+        <script>scripts\get_pxinimigo.gml</script>
+        <scripts name="Peao">
+          <script>scripts\ia_peao.gml</script>
+          <script>scripts\ia_peao_seguirmae.gml</script>
+          <script>scripts\ia_peao_atacar.gml</script>
+          <script>scripts\ia_peao_solto.gml</script>
+          <script>scripts\ia_peao_divergente.gml</script>
         </scripts>
+        <scripts name="act">
+          <script>scripts\trajetoriaorbital.gml</script>
+          <script>scripts\act_fixinpoint.gml</script>
+        </scripts>
+        <script>scripts\ia_perseguir.gml</script>
+        <script>scripts\ia_fugir.gml</script>
+        <script>scripts\ia_estabilizar.gml</script>
+        <script>scripts\ia_acelerar.gml</script>
+        <script>scripts\ia_direcionar.gml</script>
       </scripts>
+    </scripts>
+    <scripts name="Game modes">
+      <script>scripts\ini_lixoespacial.gml</script>
+      <script>scripts\ini_conquistar.gml</script>
+    </scripts>
+    <script>scripts\gui_pause.gml</script>
+    <script>scripts\scr_to.gml</script>
+    <script>scripts\play_scripts.gml</script>
+    <scripts name="Draw">
+      <script>scripts\DrawCircle.gml</script>
+      <script>scripts\DrawCircle_ext.gml</script>
+      <script>scripts\shield_draw.gml</script>
+      <script>scripts\draw_galho.gml</script>
+      <script>scripts\DrawMapIco.gml</script>
+      <script>scripts\dra_rp.gml</script>
+      <script>scripts\dra_imgtxtsource.gml</script>
     </scripts>
     <scripts name="Modelos 3D">
       <script>scripts\ini_3dmodel_deimos.gml</script>
       <script>scripts\ini_3dmodel_fobos.gml</script>
     </scripts>
-    <scripts name="Lixo Espacial">
-      <script>scripts\ini_lixoespacial.gml</script>
+    <scripts name="Planeta Terra">
+      <script>scripts\scr_pterra_lunagui1.gml</script>
     </scripts>
-    <scripts name="Planetas">
-      <script>scripts\TERRA.gml</script>
-    </scripts>
-    <scripts name="Tips">
-      <script>scripts\tip_menu.gml</script>
-      <script>scripts\tip_navescreen.gml</script>
+    <scripts name="Persons">
+      <scripts name="Souza">
+        <script>scripts\sSouza_tutorial_ini.gml</script>
+      </scripts>
+      <scripts name="Agente9">
+        <script>scripts\agente9_bemvindoaojogo.gml</script>
+        <script>scripts\agente9_inidefinirnave.gml</script>
+      </scripts>
     </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_CooperBlack</font>
-    <font>fonts\font_CooperBlack_12</font>
     <font>fonts\font_CourierNew</font>
-    <font>fonts\font_calibri10</font>
+    <font>fonts\calibri11</font>
     <font>fonts\arialbold12</font>
     <font>fonts\algerian48</font>
     <font>fonts\algerian16</font>
     <font>fonts\couriernewbold10</font>
     <font>fonts\arial8</font>
+    <font>fonts\Gabriola</font>
   </fonts>
   <objects name="objects">
     <objects name="sy">
+      <object>objects\o_intro</object>
       <object>objects\sy</object>
       <object>objects\parts</object>
       <object>objects\object0</object>
       <object>objects\obj_popup</object>
-      <object>objects\obj_tips</object>
+      <object>objects\obj_pause</object>
+      <object>objects\obj_debug</object>
     </objects>
     <objects name="Cenario">
       <object>objects\obj_Cenario</object>
@@ -454,26 +586,35 @@
         <object>objects\obj_Saturno</object>
         <object>objects\obj_Urano</object>
         <object>objects\obj_Netuno</object>
+        <object>objects\obj_battlestatus</object>
       </objects>
     </objects>
     <objects name="Naves">
       <object>objects\obj_nave</object>
       <objects name="Player">
         <object>objects\obj_nvplayer</object>
-        <object>objects\obj_pbs01</object>
-        <object>objects\obj_pmg</object>
         <object>objects\obj_pee</object>
+        <object>objects\obj_pmg</object>
         <object>objects\obj_ppeao</object>
       </objects>
       <objects name="Inimigo">
         <object>objects\obj_nvinimigo</object>
-        <object>objects\obj_iss02</object>
+        <object>objects\obj_img</object>
+        <object>objects\obj_imp</object>
         <object>objects\obj_ipeao</object>
+        <object>objects\oVespaI</object>
       </objects>
-      <object>objects\obj_disparo</object>
-      <objects name="Equipamentos">
-        <object>objects\obj_propulsornoone</object>
-        <object>objects\obj_propulsor01</object>
+      <objects name="others">
+        <object>objects\obj_disparo</object>
+        <object>objects\obj_shield</object>
+      </objects>
+      <objects name="Vespa">
+        <object>objects\oVespa</object>
+        <object>objects\oVespa_body</object>
+        <object>objects\oVespa_asa</object>
+        <object>objects\oVespa_gun</object>
+        <object>objects\oVespa_prop</object>
+        <object>objects\oVespa_ext</object>
       </objects>
     </objects>
     <objects name="OBA">
@@ -481,11 +622,65 @@
     </objects>
     <objects name="others">
       <object>objects\obj_asteroid</object>
+    </objects>
+    <objects name="Drops">
+      <object>objects\obj_dropbox</object>
+      <object>objects\ttd_astrocoin</object>
+      <object>objects\obj_dropposition</object>
       <object>objects\obj_spacegarbage</object>
+    </objects>
+    <objects name="interface objects (IO's)">
+      <objects name="Menu">
+        <object>objects\io_menu</object>
+        <object>objects\io_nave</object>
+        <object>objects\io_conquistas</object>
+      </objects>
+      <objects name="Sistema Solar">
+        <object>objects\io_sosy</object>
+        <objects name="Teluricos">
+          <object>objects\io_teluricos</object>
+          <object>objects\io_gasosos</object>
+          <object>objects\bio_mercurio</object>
+          <object>objects\bio_venus</object>
+          <object>objects\bio_terra</object>
+          <object>objects\bio_marte</object>
+          <object>objects\io_terra</object>
+        </objects>
+      </objects>
+      <objects name="Quiz">
+        <object>objects\io_quizmodes</object>
+        <object>objects\io_quizfrenetico</object>
+        <object>objects\io_quizaprendizado</object>
+        <object>objects\io_syquiz</object>
+        <objects name="multijogador objects">
+          <object>objects\io_quizmultijogador</object>
+          <object>objects\syquiz_multiplayer</object>
+          <object>objects\obj_quizequipe</object>
+          <object>objects\obj_quiz_alternativainicial</object>
+          <object>objects\obj_quiz_alternativa</object>
+          <object>objects\obj_quiz_confirmar</object>
+          <object>objects\obj_quizend</object>
+        </objects>
+      </objects>
+      <object>objects\oLuana</object>
+      <object>objects\oAgente9</object>
+      <object>objects\oSouza</object>
+      <object>objects\oAstrocoin</object>
+    </objects>
+    <objects name="Campanha">
+      <object>objects\BCamp_return</object>
+      <object>objects\oBTutorial</object>
+    </objects>
+    <objects name="teste">
+      <object>objects\adm_teste</object>
     </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
+    <room>rooms\rm_campanha</room>
+    <rooms name="teste">
+      <room>rooms\rm_vespa</room>
+    </rooms>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

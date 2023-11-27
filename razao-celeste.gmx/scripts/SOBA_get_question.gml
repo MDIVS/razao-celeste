@@ -2,26 +2,22 @@
 var a;
 if (argument1 == "Astronomia") {
     if (argument0 == 1) {
-        a[0] = OBA_ASTRONOMIA1_001;
-        a[1] = OBA_ASTRONOMIA1_002;
-        a[2] = OBA_ASTRONOMIA1_003;
-        a[3] = OBA_ASTRONOMIA1_004;
-        a[4] = OBA_ASTRONOMIA1_005;
-        a[5] = OBA_ASTRONOMIA1_006;
-        a[6] = OBA_ASTRONOMIA1_007;
-        a[7] = OBA_ASTRONOMIA1_008;
-        a[8] = OBA_ASTRONOMIA1_009;
-        a[9] = OBA_ASTRONOMIA1_010;
-        a[10] = OBA_ASTRONOMIA1_011;
-        a[11] = OBA_ASTRONOMIA1_012;
-        a[12] = OBA_ASTRONOMIA1_013;
-        a[13] = OBA_ASTRONOMIA1_014;
-        a[14] = OBA_ASTRONOMIA1_015;
-        a[15] = OBA_ASTRONOMIA1_016;
-        a[16] = OBA_ASTRONOMIA1_017;
-        a[17] = OBA_ASTRONOMIA1_018;
-        a[18] = OBA_ASTRONOMIA1_019;
-        a[19] = OBA_ASTRONOMIA1_020;
+        //rotacao terrestre
+        a[0] = choose(SOBA_000,SOBA_001,SOBA_002,SOBA_003,SOBA_004,SOBA_005,SOBA_006,SOBA_007,SOBA_008);
+        
+        //translação terrestre
+        a[1] = choose(SOBA_010,SOBA_011,SOBA_012,SOBA_013,SOBA_014,SOBA_015,SOBA_016,SOBA_017);
+        
+        //lua terrestre
+        a[2] = choose(SOBA_020,SOBA_021,SOBA_022,SOBA_023,SOBA_024,SOBA_025,SOBA_026,SOBA_027,SOBA_028);
+        
+        //sol
+        a[3] = choose(SOBA_030,SOBA_031,SOBA_032,SOBA_033,SOBA_034);
+        
+        a[4] = OBA_ASTRONOMIA1_016;
+        a[5] = OBA_ASTRONOMIA1_018;
+        a[6] = OBA_ASTRONOMIA1_019;
+        a[7] = OBA_ASTRONOMIA1_020;
     }
 } else if argument1=="Astronáutica"{
     if argument0==1{

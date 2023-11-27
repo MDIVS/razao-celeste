@@ -33,6 +33,8 @@ Select = 0;
 Nome = "";
 GoX = 0;
 GoY = 0;
+direction = random(360);
+image_angle = direction;
 </string>
           </argument>
         </arguments>

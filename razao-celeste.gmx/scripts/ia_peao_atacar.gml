@@ -1,6 +1,6 @@
 ///ia_peao_atacar();
 if (!instance_exists(Alvo)) {
-    Alvo = get_pxinimigo(x,y,Inimigo);
+    Alvo = get_pxinimigo(x,y,Inimigo,500);
     if (Alvo == -4) {
         if (Mae == -4) {ACT = ia_peao_solto} else {ACT = ia_peao_seguirmae};
     }

@@ -3,11 +3,11 @@ var dba = argument[0];
 var dis = dba[1], dir = dba[2]+image_angle;
 var xx = x+lengthdir_x(dis,dir), yy = y+lengthdir_y(dis,dir);
 
-draw_sprite_ext(aspr_fuzil,0,xx,yy,.3,.3,dba[4],-1,image_alpha);
+draw_sprite_ext(aspr_fuzil,0,xx,yy,1,1,dba[4],-1,image_alpha);
 
 var dd = 9;
-if (MdD != -1) {
-    dd = angle_difference(point_direction(xx,yy,device_mouse_x(MdD),device_mouse_y(MdD)),dba[4]);
+if (Joys_device(JOYS) != -1) {
+    dd = angle_difference(point_direction(xx,yy,device_mouse_x(Joys_device(JOYS)),device_mouse_y(Joys_device(JOYS))),dba[4]);
     dba[@ 4] = dba[4]+min(abs(dd),8)*sign(dd);
 }
 

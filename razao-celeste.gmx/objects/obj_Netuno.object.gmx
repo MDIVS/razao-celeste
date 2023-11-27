@@ -2,8 +2,8 @@
 <object>
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
-  <depth>0</depth>
+  <visible>-1</visible>
+  <depth>100</depth>
   <persistent>0</persistent>
   <parentName>obj_planet</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -26,8 +26,21 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-DRA=-1; GUI=-1;
+PLANETA = id;
+VIEW_OBJECT = instance_create(200,200,obj_pmg);
+instance_create(DW-64,64,obj_pause);
+instance_create(lengthdir_x(2000,80),lengthdir_y(2000,80),obj_imp);
+instance_create(lengthdir_x(2000,60),lengthdir_y(2000,60),obj_imp);
+instance_create(lengthdir_x(2000,40),lengthdir_y(2000,40),obj_imp);
+instance_create(lengthdir_x(5000,60),lengthdir_y(5000,60),obj_img);
 
+if audio_is_playing(BMus)audio_stop_sound(BMus);
+BMus=PlaySom(bmus_ivan_1,1,VMus,1000);
+
+TIMER = 30*60*5;
+
+BigSurf = surface_create(256,256);
+LowSurf = surface_create(32,32);
 TEXTURA = background_get_texture(tx_netuno);
 RAIO = 24.622*10;
 
@@ -52,6 +65,151 @@ Atmosfera[0,2] = 1;
 PesqTrans[0] = 60190; //dias terrestres
 PesqTrans[1] = 4540; //distancia maxima (em milhões de km)
 PesqTrans[2] = 4460; //distancia mínima (em milhões de km)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>event_inherited();
+if !surface_exists(BigSurf) BigSurf = surface_create(256,256);
+if !surface_exists(LowSurf) LowSurf = surface_create(32,32);
+
+if !instance_exists(obj_battlestatus)&amp;&amp;(TIMER&lt;=0||!instance_exists(obj_nvplayer)||instance_number(obj_nvinimigo)==0) {
+    var i = instance_create(0,0,obj_battlestatus);
+    i.MetasTXT[0] = "Derrote dois inimigos";
+    i.MetasTXT[1] = "Derrote três inimigos";
+    i.MetasTXT[2] = "Derrote todos os inimigos";
+    i.MetasBOL[0] = 0;
+    i.MetasBOL[1] = 0;
+    i.MetasBOL[2] = 0;
+    
+    var gameover = 1;
+    ini_open("Salvo.ini");
+    if instance_number(obj_nvinimigo)==2{
+        gameover = 0;
+        i.MetasBOL[0] = 1;
+        if ini_read_real("CONQUISTAS",string_upper(Nome),0)&lt;1 ini_write_real("CONQUISTAS",string_upper(Nome),1);
+    }
+    
+    if instance_number(obj_nvinimigo)==1{
+        gameover = 0;
+        i.MetasBOL[1] = 1;
+        if ini_read_real("CONQUISTAS",string_upper(Nome),0)&lt;2 ini_write_real("CONQUISTAS",string_upper(Nome),2);
+    }
+    
+    if instance_number(obj_nvinimigo)==0{
+        gameover = 0;
+        i.MetasBOL[2] = 1;
+        if ini_read_real("CONQUISTAS",string_upper(Nome),0)&lt;3 ini_write_real("CONQUISTAS",string_upper(Nome),3);
+    }
+    ini_close();
+    
+    if gameover {
+        i.Cor = 32511;
+        PlaySom(snd_GameOver,0,VSom,0);
+    } else {
+        i.Cor = 16743936;
+        PlaySom(snd_win,0,VSom,0);
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if !rectangle_in_circle(view_xview,view_yview,view_xview+view_wview,view_yview+view_hview,0,0,128) {
+    var xx = min(DW-24,max(24,x-view_xview*(DW/view_wview)));
+    var yy = min(DH-24,max(24,y-view_yview*(DH/view_hview)));
+    surface_set_target(LowSurf);
+    draw_clear_alpha(0,0);
+    d3d_start();
+    d3d_set_projection_ortho(-16,-16,32,32,0);
+    d3d_transform_set_scaling(16,16,16);
+    d3d_transform_add_rotation_z(image_index/3); //movimento de rotação
+    d3d_transform_add_rotation_y(28); //angulação de eixo
+    d3d_transform_add_rotation_x(90); //angulação de perspectiva
+    d3d_model_draw(M3D_ESFERA,0,0,0,TEXTURA);
+    d3d_transform_set_identity();
+    d3d_end();
+    surface_reset_target();
+    draw_surface(LowSurf,xx-16,yy-16);
+}
+
+BTimer(DW/2,32,ceil(TIMER/30));
+if Bspr(MA,spr_srp,Show_RP,DW-48,128) {Show_RP=!Show_RP; PlaySom(sound1,0,VSom,0)};
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>event_inherited();
+if Show_RP dra_rp();
+if rectangle_in_circle(view_xview,view_yview,view_xview+view_wview,view_yview+view_hview,0,0,128) {
+    surface_set_target(BigSurf);
+    draw_clear_alpha(0,0);
+    d3d_start();
+    d3d_set_projection_ortho(-128,-128,256,256,0);
+    d3d_transform_set_scaling(128,128,128);
+    d3d_transform_add_rotation_z(image_index/3); //movimento de rotação
+    d3d_transform_add_rotation_y(28); //angulação de eixo
+    d3d_transform_add_rotation_x(90); //angulação de perspectiva
+    d3d_model_draw(M3D_ESFERA,0,0,0,TEXTURA);
+    d3d_transform_set_identity();
+    d3d_end();
+    surface_reset_target();
+    draw_surface(BigSurf,-128,-128);
+}
 </string>
           </argument>
         </arguments>

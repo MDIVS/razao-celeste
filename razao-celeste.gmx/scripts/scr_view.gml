@@ -1,5 +1,5 @@
 //zoombutton();
-if (Title == "") ctrlviewmouse();
+ctrlviewmouse();
 selectaobject();
 
 if (VIEW_OBJECT!=-1 && !instance_exists(VIEW_OBJECT)) VIEW_OBJECT=-1;

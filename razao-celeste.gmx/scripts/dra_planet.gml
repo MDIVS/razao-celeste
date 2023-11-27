@@ -12,8 +12,8 @@ draw_clear_alpha(0,0);
 d3d_start();
 d3d_set_projection_ortho(-rr,-rr,rr*2,rr*2,0);
 d3d_transform_set_scaling(rr,rr,rr);
-d3d_transform_add_rotation_x(d2); //angulação de eixo
 d3d_transform_add_rotation_z(d1); //movimento de rotação
+d3d_transform_add_rotation_y(d2); //angulação de eixo
 d3d_transform_add_rotation_x(90); //angulação de perspectiva
 d3d_model_draw(M3D_ESFERA,0,0,0,tx);
 d3d_transform_set_identity();

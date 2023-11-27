@@ -7,7 +7,7 @@ dba[@ 4] = dba[3]+image_angle;
 if (dba[5] == 0) {
     var alvos = dba[9], alvo = -4;
     for (var i=0; i<array_length_1d(alvos); i++) {
-        alvo = get_pxinimigo(xx,yy,alvos[i]);
+        alvo = get_pxinimigo(xx,yy,alvos[i],500);
         if (alvo != -4) break;
     }
     

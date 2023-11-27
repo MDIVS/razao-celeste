@@ -1,5 +1,5 @@
-///ss3dview_terra()
-var dir = 360/365*Now[3];
+///ss3dview_terra( index )
+var dir = 360/365*argument[0];
 
 d3d_primitive_begin(pr_linestrip);
 for (var i=0; i<=180; i++) d3d_vertex(lengthdir_x(152,i*2),lengthdir_y(147,i*2),0);

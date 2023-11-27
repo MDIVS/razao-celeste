@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>event_inherited();
 Construivel=0;
+team_colour = c_orange;
 </string>
           </argument>
         </arguments>

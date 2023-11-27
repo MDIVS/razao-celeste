@@ -5,7 +5,7 @@ if (!instance_exists(Mae) || Mae == -4) {
     exit;
 }
 
-Alvo = get_pxinimigo(Mae.x,Mae.y,Inimigo);
+Alvo = get_pxinimigo(Mae.x,Mae.y,Inimigo,500);
 if (Alvo != -4) ACT = ia_peao_atacar;
 
 var pd = min(point_distance(x,y,Mae.x,Mae.y),180);

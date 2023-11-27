@@ -2,8 +2,8 @@
 <object>
   <spriteName>spr_pee</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
-  <depth>0</depth>
+  <visible>-1</visible>
+  <depth>50</depth>
   <persistent>0</persistent>
   <parentName>obj_nvplayer</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -46,9 +46,74 @@ Port = ini_portsy();
 Weap = ini_weaponsy();
 add_port(Port,sprite_width/3,0,obj_ppeao,c_white);
 for (var i=0; i&lt;3; i++) add_port(Port,sprite_width/3,360/3*i,obj_ppeao,c_white);
-for (var i=0; i&lt;5; i++) add_weapon(Weap,sprite_width/4,360/5*(i+.5),360/5*(i+.5),ini_read_real(Nome,"Weap"+string(i),-1),obj_nvinimigo);
-for (var i=0; i&lt;5; i++) add_weapon(Weap,sprite_width/2,360/5*i,360/5*i,ini_read_real(Nome,"Weap"+string(5+i),-1),obj_nvinimigo);
+for (var i=0; i&lt;5; i++) add_weapon(Weap,180,360/5*i,360/5*i,ini_read_real(Nome,"Weap"+string(i),-1),obj_nvinimigo);
+for (var i=0; i&lt;5; i++) add_weapon(Weap,100,360/5*(i+.5),360/5*(i+.5),ini_read_real(Nome,"Weap"+string(5+i),-1),obj_nvinimigo);
 ini_close();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if Vida[0]&gt;0Vida[0]=min(Vida[1],Vida[0]+Vida[2])else Vida[0]=0;
+if Vida[0]==0{instance_destroy();/*efeito de particulas*/;exit};
+
+if VIEW_OBJECT!=id{
+    draw_line_width_colour(x-sprite_width/2,y+sprite_height/2+5,x-sprite_width/2+sprite_width*(Vida[0]/Vida[1]),y+sprite_height/2+5,3,c_orange,c_orange);
+    draw_line_width_colour(x-sprite_width/2,y+sprite_height/2+9,x-sprite_width/2+sprite_width*(Vida[0]/Vida[1]),y+sprite_height/2+9,2,c_aqua,c_aqua);
+} else {
+    draw_set_colour(16743936);
+    draw_primitive_begin(pr_linelist);
+    for(var i=0;i&lt;=360;i+=9)draw_vertex(lengthdir_x(192,i),lengthdir_y(192,i));
+    draw_primitive_end();
+    draw_set_colour(c_white);
+}
+
+var dir = point_direction(x,y,0,0)+90;
+var circ=(2*pi*192), step=circ/Spd[0];
+x = lengthdir_x(192,360/step*image_index);
+y = lengthdir_y(192,360/step*image_index);
+image_index++;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,image_angle,image_blend,min(draw_get_alpha(),image_alpha));
+scr_weaponsy(Weap);
 </string>
           </argument>
         </arguments>

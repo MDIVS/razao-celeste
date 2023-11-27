@@ -1,0 +1,14 @@
+var ic = instance_create(DW/5*1,DH/2,obj_quiz_alternativa);
+ic.Correta = 0;
+ic.Txt = "	Carro";
+ic = instance_create(DW/5*2,DH/2,obj_quiz_alternativa);
+ic.Correta = 1;
+ic.Txt = "	Foguete";
+ic = instance_create(DW/5*3,DH/2,obj_quiz_alternativa);
+ic.Correta = 0;
+ic.Txt = "	Trem";
+ic = instance_create(DW/5*4,DH/2,obj_quiz_alternativa);
+ic.Correta = 0;
+ic.Txt = "	Avião";
+ic = instance_create(DW/2,DH/4,obj_quiz_confirmar);
+ic.Txt = "O que é utilizado para locomover-se no espaço?";

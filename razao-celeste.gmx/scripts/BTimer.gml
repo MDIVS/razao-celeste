@@ -1,6 +1,5 @@
 ///BTimer( x, y, t )
-var m = string(floor(argument2/60));
-var t = m+":"+string(argument2 mod 60);
+var t = string(argument2);
 var sprw = sprite_get_width(spr_timer);
 var strw = string_width(t);
 var w = sprw+8+strw;

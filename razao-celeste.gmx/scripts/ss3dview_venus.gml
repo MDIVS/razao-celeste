@@ -1,5 +1,5 @@
-///ss3dview_venus()
-var dir = 360/224*Now[3];
+///ss3dview_venus( index )
+var dir = 360/224*argument[0];
 
 d3d_primitive_begin(pr_linestrip);
 for (var i=0; i<=180; i++) d3d_vertex(lengthdir_x(108,i*2),lengthdir_y(107,i*2),0);

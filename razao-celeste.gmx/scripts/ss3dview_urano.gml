@@ -1,5 +1,5 @@
-///ss3dview_urano()
-var dir = 360/30799*Now[3];
+///ss3dview_urano( index )
+var dir = 360/30799*argument[0];
 
 d3d_primitive_begin(pr_linestrip);
 for (var i=0; i<=180; i++) d3d_vertex(lengthdir_x(3004,i*2),lengthdir_y(2748,i*2),0);

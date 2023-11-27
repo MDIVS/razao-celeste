@@ -16,11 +16,12 @@ if (alvo != -4) {
     
     if (dba[5] == 0) {
         alvo.Alvo = id;
-        alvo.Vida[0]-=.1;
-        dba[@ 5]=room_speed/8;
+        alvo.Vida[0]-=.2;
+        dba[@ 5]=30/3;
+        PlaySom(test,0,VSom,0);
     }
 } else {
     var dd = angle_difference(dba[3]+image_angle,dba[4]);
     dba[@ 4] = dba[4]+min(abs(dd),2)*sign(dd);
 }
-draw_sprite_ext(aspr_laser,0,xx,yy,.3,.3,dba[4],-1,1);
+draw_sprite_ext(aspr_laser,0,xx,yy,1,1,dba[4],-1,1);

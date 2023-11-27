@@ -1,6 +1,5 @@
-///ss3dview_mercurio()
-var dir = 360/88*Now[3];
-
+///ss3dview_mercurio( index )
+var dir = 360/88*argument[0];
 
 d3d_primitive_begin(pr_linestrip);
 for (var i=0; i<=180; i++) d3d_vertex(lengthdir_x(70,i*2),lengthdir_y(46,i*2),0);

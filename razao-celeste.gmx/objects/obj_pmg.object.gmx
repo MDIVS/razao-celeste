@@ -2,8 +2,8 @@
 <object>
   <spriteName>spr_pmg</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
-  <depth>0</depth>
+  <visible>-1</visible>
+  <depth>48</depth>
   <persistent>0</persistent>
   <parentName>obj_nvplayer</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -27,24 +27,15 @@
             <kind>1</kind>
             <string>ini_open("Salvo.ini");
 event_inherited();
-DRA = scr_pbs01;
+
 Nome = "Módulo Grande";
 
-Vida[0] = 25; //Menor vida inicial possível
-Vida[1] = 25; //Menor vida máxima inicial possível
-Vida[2] = 0; //Menor regeneração possível
-
-Spd[0] = 0;
-Spd[1] = 64/30;
-Spd[2] = Spd[1]/90;
-
-directionspeed = 360/30/5;
-directionincrm = 0;
-directionspeedmax = 2.4; //velocidade de giro máximo de 72°/s
+directionspeed = 0;
+directionspeedmax = 360/30/4; //velocidade de giro máximo de 72°/s
 
 Prop = ini_propsy();
-add_prop(Prop,37,172,0,50,1);
-add_prop(Prop,37,188,0,50,1);
+add_prop(Prop,100,172,0,team_colour,parts.propparts);
+add_prop(Prop,100,188,0,team_colour,parts.propparts);
 
 Port = ini_portsy();
 add_port(Port,4,0,obj_ppeao,c_white);
@@ -52,13 +43,137 @@ add_port(Port,4,180,obj_ppeao,c_white);
 add_port(Port,12,180,obj_ppeao,c_white);
 
 Weap = ini_weaponsy();
-add_weapon(Weap,36,18,0,ini_read_real(Nome,"Weap0",-1),obj_nvinimigo);
-add_weapon(Weap,36,342,0,ini_read_real(Nome,"Weap1",-1),obj_nvinimigo);
-add_weapon(Weap,27,44,75,ini_read_real(Nome,"Weap2",-1),obj_nvinimigo);
-add_weapon(Weap,27,316,285,ini_read_real(Nome,"Weap3",-1),obj_nvinimigo);
-add_weapon(Weap,16,90,120,ini_read_real(Nome,"Weap4",-1),obj_nvinimigo);
-add_weapon(Weap,16,270,240,ini_read_real(Nome,"Weap5",-1),obj_nvinimigo);
+var n = ini_read_real(Nome,"Weapons",0);
+for (var i=0; i&lt;n; i++) {
+    var dis = ini_read_real(Nome,"Weapdis"+string(i),0);
+    var dir = ini_read_real(Nome,"Weapdir"+string(i),0);
+    var scr = ini_read_real(Nome,"Weapscr"+string(i),-1);
+    var emy = ini_read_real(Nome,"Weapemy"+string(i),obj_nvinimigo);
+    add_weapon(Weap,dis,dir,dir,scr,emy);
+}
 ini_close();
+
+Vida[0] = 25;
+Vida[1] = 25;
+Vida[2] = 0;
+
+Spd[0] = 0;
+Spd[1] = 180/30;
+Spd[2] = Spd[1]/90;
+Acel = 0;
+Frei = 0;
+
+RA[0] = 1000;
+RA[1] = 750;
+RA[2] = 200;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if Vida[0]&gt;0Vida[0]=min(Vida[1],Vida[0]+Vida[2])else Vida[0]=0;
+if Vida[0]==0{instance_destroy();/*efeito de particulas*/;exit};
+
+scr_propsy(Prop);
+
+x+=lengthdir_x(Spd[0],direction);
+y+=lengthdir_y(Spd[0],direction);
+image_angle=direction;
+
+var stoping = 1;
+Acel = 0;
+Frei = 0;
+if VIEW_OBJECT==id {
+    if Joys_distance(JOYS)&gt;=.5 {
+        if Spd[0]&lt;Spd[1] Acel = 1;
+        Spd[0] = min(Spd[1],Spd[0]+Spd[2]);
+        var dd=angle_difference(Joys_direction(JOYS),direction);
+        directionspeed = min(abs(dd)/30,directionspeedmax)*sign(dd);
+        stoping = 0;
+    }
+}
+
+if stoping {
+    directionspeed *= .9;
+    if Spd[0]&gt;0 Frei = 1;
+    Spd[0] = max(0,Spd[0]-Spd[2]);
+}
+
+direction += directionspeed;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if VIEW_OBJECT==id {
+    scr_Joystick(JOYS);
+}
+
+if !rectangle_in_rectangle(x-sprite_width,y-sprite_width,x+sprite_width,y+sprite_width,view_xview,view_yview,view_xview+view_wview,view_yview+view_hview) DrawMapIco(sml_pmg,0,x,y,image_angle);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if VIEW_OBJECT!=id{
+    draw_line_width_colour(x-sprite_width/2,y+sprite_height/2+5,x-sprite_width/2+sprite_width*(Vida[0]/Vida[1]),y+sprite_height/2+5,3,c_orange,c_orange);
+    draw_line_width_colour(x-sprite_width/2,y+sprite_height/2+9,x-sprite_width/2+sprite_width*(Vida[0]/Vida[1]),y+sprite_height/2+9,2,c_aqua,c_aqua);
+}
+
+draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha);
+
+scr_weaponsy(Weap);
 </string>
           </argument>
         </arguments>

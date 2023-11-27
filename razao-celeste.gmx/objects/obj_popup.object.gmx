@@ -25,9 +25,102 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>TXT = "";
+            <string>image_xscale = .5;
+image_yscale = .5;
+Skiped = 0;
+TXT = "";
 TIME = 0;
+with(obj_popup) {
+    if id==other.id continue;
+    vspeed = -8;
+    Skiped = 1;
+}
+
+if sprite_index!=-1 image_speed=0;
 </string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>image_alpha = min(TIME-image_index,30)/15;
+if image_index&gt;TIME instance_destroy();
+if sprite_index!=-1 image_index++;
+if Skiped {
+    image_xscale = max(.5,image_xscale-1/10);
+    image_yscale = max(.5,image_yscale-1/10);
+} else {
+    image_xscale = min(1,image_xscale+1/10);
+    image_yscale = min(1,image_yscale+1/10);
+}
+vspeed *= .9;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="75">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>var alpha = draw_get_alpha();
+draw_set_alpha(image_alpha);
+draw_roundrect_colour_ext(x-string_width(TXT)/2*image_xscale-12,y-string_height(TXT)/2*image_yscale-6,x+string_width(TXT)/2*image_xscale+12,y+string_height(TXT)/2*image_yscale+6,min(string_width(TXT),string_height(TXT))+24,min(string_width(TXT),string_height(TXT))+12,0,0,0);
+draw_text_transformed(x,y,TXT,image_xscale,image_yscale,0);
+draw_set_alpha(alpha);
+if sprite_index!=-1 draw_sprite_ext(sprite_index,image_index,x-string_width(TXT)/2*image_xscale-sprite_width/2,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string></string>
           </argument>
         </arguments>
       </action>

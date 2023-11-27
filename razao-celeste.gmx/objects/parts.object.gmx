@@ -2,7 +2,7 @@
 <object>
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
+  <visible>0</visible>
   <depth>0</depth>
   <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -42,9 +42,8 @@ part_type_blend( propluz,1);
 part_type_life( propluz,5,5);
 
 coin = part_type_create();
-part_type_sprite( coin,spr_coin,0,0,0);
+part_type_sprite( coin,spr_astrocoin,0,0,0);
 //part_type_size( coin,1,1,0,0);
-part_type_color1( coin,16777215);
 part_type_alpha3( coin,1,1,0);
 part_type_speed( coin,7,10,0,0);
 part_type_direction( coin,80,100,0,0);
@@ -108,15 +107,39 @@ part_type_direction( backparts,0,359,0,5);
 part_type_blend( backparts,1);
 part_type_life( backparts,150,300);
 
+proppart3 = part_type_create();
+part_type_shape( proppart3,pt_shape_flare);
+part_type_size( proppart3,.1,.1,0,0);
+part_type_colour1( proppart3,c_aqua);
+part_type_alpha2( proppart3,.33,0);
+part_type_speed( proppart3,2,4,0,0);
+part_type_life( proppart3,10,10);
+part_type_blend( proppart3,1);
+
+proppart2 = part_type_create();
+part_type_shape( proppart2,pt_shape_flare);
+part_type_size( proppart2,.3,.3,0,0);
+part_type_alpha2( proppart2,.2,0);
+part_type_speed( proppart2,.3,.3,0,0);
+part_type_direction( proppart2,0,359,0,5);
+part_type_blend( proppart2,1);
+part_type_life( proppart2,10,10);
+
 propparts = part_type_create();
-part_type_shape( propparts,pt_shape_flare);
-part_type_size( propparts,.1,.1,0,0);
-part_type_colour1( propparts,32511);
-part_type_alpha2( propparts,.2,0);
-part_type_speed( propparts,.1,.1,0,0);
-part_type_direction( propparts,0,360,0,5);
-part_type_life( propparts,10,10);
-part_type_blend( propparts,1);
+part_type_shape(propparts,pt_shape_cloud);
+part_type_size(propparts,0.10,0.10,0,0.05);
+part_type_alpha2(propparts,1,0);
+part_type_blend(propparts,1);
+part_type_life(propparts,60,60);
+
+quizwrong = part_type_create();
+part_type_shape( quizwrong,pt_shape_flare);
+part_type_size( quizwrong,0.50,0.50,0,0);
+part_type_alpha2( quizwrong,1,0);
+part_type_speed( quizwrong,1,1,0,0);
+part_type_direction( quizwrong,0,359,0,0);
+part_type_blend( quizwrong,1);
+part_type_life( quizwrong,30,30);
 </string>
           </argument>
         </arguments>

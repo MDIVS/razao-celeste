@@ -1,0 +1,14 @@
+var ic = instance_create(DW/5*1,DH/2,obj_quiz_alternativa);
+ic.Correta = 1;
+ic.Txt = "	12 h";
+ic = instance_create(DW/5*2,DH/2,obj_quiz_alternativa);
+ic.Correta = 0;
+ic.Txt = "	14 h";
+ic = instance_create(DW/5*3,DH/2,obj_quiz_alternativa);
+ic.Correta = 0;
+ic.Txt = "	16 h";
+ic = instance_create(DW/5*4,DH/2,obj_quiz_alternativa);
+ic.Correta = 0;
+ic.Txt = "	11 h";
+ic = instance_create(DW/2,DH/4,obj_quiz_confirmar);
+ic.Txt = "Um satélite gasta 90 minutos para dar um giro completo em torno da Terra. Suponha que um satélite passe sobre sua escola as às 10h30min, a que horas ele passará novamente sobre sua escola?";

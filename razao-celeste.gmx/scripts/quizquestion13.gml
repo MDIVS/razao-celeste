@@ -1,0 +1,14 @@
+var ic = instance_create(DW/5*1,DH/2,obj_quiz_alternativa);
+ic.Correta = 0;
+ic.Txt = "	Brasileiro";
+ic = instance_create(DW/5*2,DH/2,obj_quiz_alternativa);
+ic.Correta = 0;
+ic.Txt = "	Japonês";
+ic = instance_create(DW/5*3,DH/2,obj_quiz_alternativa);
+ic.Correta = 0;
+ic.Txt = "	Americano";
+ic = instance_create(DW/5*4,DH/2,obj_quiz_alternativa);
+ic.Correta = 1;
+ic.Txt = "	Russo";
+ic = instance_create(DW/2,DH/4,obj_quiz_confirmar);
+ic.Txt = "De que país era o foguete Soyuz, no qual Marcos Pontes foi à Estação Espacial Internacional (em inglês: ISS)?";

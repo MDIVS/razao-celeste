@@ -10,3 +10,7 @@ ic.DRA = argument[2];
 ic.direction = arma[4];
 ic.Alvos = arma[9];
 ic.From = id;
+ic.Dano = 1;
+ic.Spd = 10;
+
+return(ic);

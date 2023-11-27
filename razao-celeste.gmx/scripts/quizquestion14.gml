@@ -1,0 +1,14 @@
+var ic = instance_create(DW/5*1,DH/2,obj_quiz_alternativa);
+ic.Correta = 0;
+ic.Txt = "	1996";
+ic = instance_create(DW/5*2,DH/2,obj_quiz_alternativa);
+ic.Correta = 0;
+ic.Txt = "	1997";
+ic = instance_create(DW/5*3,DH/2,obj_quiz_alternativa);
+ic.Correta = 1;
+ic.Txt = "	1998";
+ic = instance_create(DW/5*4,DH/2,obj_quiz_alternativa);
+ic.Correta = 0;
+ic.Txt = "	2008";
+ic = instance_create(DW/2,DH/4,obj_quiz_confirmar);
+ic.Txt = "Em que ano a Estação Espacial Internacional começou a ser montada no espaço? Mesmo ano que começamos o OBA.";

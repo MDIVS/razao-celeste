@@ -1,0 +1,14 @@
+var ic = instance_create(DW/5*1,DH/2,obj_quiz_alternativa);
+ic.Correta = 0;
+ic.Txt = "	Pessoas";
+ic = instance_create(DW/5*2,DH/2,obj_quiz_alternativa);
+ic.Correta = 0;
+ic.Txt = "	Cargas";
+ic = instance_create(DW/5*3,DH/2,obj_quiz_alternativa);
+ic.Correta = 0;
+ic.Txt = "	Outros veículos";
+ic = instance_create(DW/5*4,DH/2,obj_quiz_alternativa);
+ic.Correta = 1;
+ic.Txt = "	Motor e Tanque de combustível";
+ic = instance_create(DW/2,DH/4,obj_quiz_confirmar);
+ic.Txt = "Foguetes são construídos para o transporte de cargas e pessoas ao espaço. Podem ser divididos em duas partes. O que pode ser transportado na parte de baixo?";

@@ -1,0 +1,14 @@
+var ic = instance_create(DW/5*1,DH/2,obj_quiz_alternativa);
+ic.Correta = 0;
+ic.Txt = "	João Canalle";
+ic = instance_create(DW/5*2,DH/2,obj_quiz_alternativa);
+ic.Correta = 1;
+ic.Txt = "	Santos Dumont";
+ic = instance_create(DW/5*3,DH/2,obj_quiz_alternativa);
+ic.Correta = 0;
+ic.Txt = "	Ayrton Senna";
+ic = instance_create(DW/5*4,DH/2,obj_quiz_alternativa);
+ic.Correta = 0;
+ic.Txt = "	Dom Pedro II";
+ic = instance_create(DW/2,DH/4,obj_quiz_confirmar);
+ic.Txt = "Um brasileiro, nascido na cidade mineira chamada Santos Dumont, (antigamente a cidade era chamada Palmira) inventou o avião, em 1906. Qual o nome do inventor do avião?";

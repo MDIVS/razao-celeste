@@ -28,6 +28,15 @@
             <string>STP=-1;DRA=-1;GUI=-1;
 NewSTP=-1;NewDRA=-1;NewGUI=-1;
 Destroy=0;
+
+Pergunta[0]="Certo";
+Pergunta[1]="Errado";
+Resposta=0;
+
+Escolhido=0;
+Confirmado=0;
+Escolha=0;
+Certo=0;
 image_alpha=0;
 </string>
           </argument>

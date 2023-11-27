@@ -1,0 +1,14 @@
+var ic = instance_create(DW/5*1,DH/2,obj_quiz_alternativa);
+ic.Correta = 0;
+ic.Txt = "	Motor e Tanque de combustível";
+ic = instance_create(DW/5*2,DH/2,obj_quiz_alternativa);
+ic.Correta = 0;
+ic.Txt = "Motor e Alimentos";
+ic = instance_create(DW/5*3,DH/2,obj_quiz_alternativa);
+ic.Correta = 1;
+ic.Txt = "Cargas e pessoas";
+ic = instance_create(DW/5*4,DH/2,obj_quiz_alternativa);
+ic.Correta = 0;
+ic.Txt = "	Tanque de combustível e Cargas";
+ic = instance_create(DW/2,DH/4,obj_quiz_confirmar);
+ic.Txt = "Os foguetes são divididos em 2 partes. O que é transportado na parte de cima?";
