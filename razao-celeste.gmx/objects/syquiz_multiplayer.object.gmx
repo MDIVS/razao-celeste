@@ -27,13 +27,14 @@
             <kind>1</kind>
             <string>Ma[0] = "";
 var n = io_quizmultijogador.Equipes;
+Equipes = n;
 for (var i=0; i&lt;n; i++) {
     Equipe[i] = instance_create(DW/(n+1)*(i+1),DH/2,obj_quizequipe);
     Equipe[i].N=i;
     Equipe[i].Nothers = n;
     Equipe[i].FixPos = 1;
     Equipe[i].Fix_x = DW/(n+1)*(i+1);
-    Equipe[i].Fix_y = DH-128;
+    Equipe[i].Fix_y = DH-DW/20;
     Equipe[i].image_blend = make_colour_hsv(255/(n+1)*(i+1),255,255);
     if i==0 {Equipe[i].image_blend=c_yellow; Equipe[i].Nome="Sol"}
     else if i==1 {Equipe[i].image_blend=c_gray; Equipe[i].Nome="Mercúrio"}
@@ -72,6 +73,11 @@ qst[13] = quizquestion14;
 qst[14] = quizquestion15;
 qst[15] = quizquestion16;
 qst[16] = quizquestion17;
+qst[17] = quizquestion18;
+qst[18] = quizquestion19;
+qst[19] = quizquestion20;
+qst[20] = quizquestion21;
+qst[21] = quizquestion22;
 
 var n = io_quizmultijogador.Questoes;
 var rdm = 0;
@@ -86,29 +92,7 @@ for (var i=1; i&lt;n+1; i++) {
     for (var ii=0; ii&lt;rdm; ii++) qst[ii] = oldqst[ii];
     for (var ii=rdm; ii&lt;array_length_1d(oldqst)-1; ii++) qst[ii] = oldqst[ii+1]
 }
-/*SCR[1] = quizquestion1;
-SCR[2] = quizquestion2;
-SCR[3] = quizquestion3;
-SCR[4] = quizquestion4;
-SCR[5] = quizquestion5;
-SCR[6] = quizquestion6;
-SCR[7] = quizquestion7;
-SCR[8] = quizquestion8;
-SCR[9] = quizquestion9;
-SCR[10] = quizquestion10;
-SCR[11] = quizquestion11;
-SCR[12] = quizquestion12;
-SCR[13] = quizquestion13;
-SCR[14] = quizquestion14;
-SCR[15] = quizquestion15;
-SCR[16] = quizquestion16;
-SCR[17] = quizquestion17;*/
 SCR[n+1] = quizmultiplayer_fim;
-
-show_debug_message("-----");
-for (var i=0; i&lt;array_length_1d(SCR); i++) show_debug_message(SCR[i]);
-show_debug_message("-----");
-for (var i=0; i&lt;array_length_1d(qst); i++) show_debug_message(qst[i]);
 </string>
           </argument>
         </arguments>
@@ -154,14 +138,7 @@ for (var i=0; i&lt;array_length_1d(qst); i++) show_debug_message(qst[i]);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if Bspr(Ma,spr_home,0,DW-64,64) {
-    if show_question("Deseja sair do quiz?") {
-        with(obj_quiz_alternativainicial) instance_destroy();
-        with(obj_quiz_alternativa) instance_destroy();
-        with(obj_quiz_confirmar) instance_destroy();
-        instance_create(DW-64,DH/2,obj_quizend);
-    }
-}
+            <string>if Bspr(Ma,spr_home,0,DW-64,24*ceil(Equipes/2)+20-16+64) instance_create(0,0,obj_quizmultiplayer_askend);
 </string>
           </argument>
         </arguments>

@@ -25,7 +25,7 @@ if Joys_device(JOYS)!=-1 {
     Chat_txt = "Viu, funcionou! Mantenha o Joystick pressionado e tente alcançar um dos anéis azuis no mapa."
     Chat_count = 0;
     STP = sSouza_tutorial_3;
-    instance_create(oVespa.x+300,oVespa.y,obj_dropposition);
+    instance_create(VIEW_OBJECT.x+300,VIEW_OBJECT.y,obj_dropposition);
 }
 
 #define sSouza_tutorial_3
@@ -34,7 +34,7 @@ if !instance_exists(obj_dropposition) {
     Chat_count = 0;
     var dir = 0;
     repeat(9) {
-        instance_create(oVespa.x+lengthdir_x(200,dir),oVespa.y+lengthdir_y(200,dir),obj_dropposition);
+        instance_create(VIEW_OBJECT.x+lengthdir_x(200,dir),VIEW_OBJECT.y+lengthdir_y(200,dir),obj_dropposition);
         dir += 360/9;
     }
     STP = sSouza_tutorial_gatilhend;

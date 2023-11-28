@@ -2,7 +2,7 @@
 var j = argument0;
 
 for(var i=0; i<array_length_1d(MA); i++) {
-    if (device_mouse_check_button_pressed(i,mb_left) && point_distance(j[0],j[1],device_mouse_x_to_gui(i),device_mouse_y_to_gui(i)) <= j[2]) j[@ 6] = i;
+    if (device_mouse_check_button_pressed(i,mb_left) && point_distance(j[0],j[1],device_mouse_x_to_gui(i),device_mouse_y_to_gui(i)) <= j[2]*1.5) j[@ 6] = i;
 };
 
 if (j[6] != -1) {
@@ -39,7 +39,5 @@ draw_set_font(arialbold12);
 var mx = j[0]+lengthdir_x(j[8]*j[2],j[7]);
 var my = j[1]+lengthdir_y(j[8]*j[2],j[7]);
 
-if j[8]<.5
-    draw_roundrect_colour_ext(mx-j[2]*.2,my-j[2]*.2,mx+j[2]*.2,my+j[2]*.2,j[2]*.1,j[2]*.1,j[3],j[3],0);
-else
-    DrawCircle(mx,my,j[2]/3,j[4],j[4],1,1,16,j[2]/3);
+if j[8]<.5 draw_roundrect_colour_ext(mx-j[2]*.2,my-j[2]*.2,mx+j[2]*.2,my+j[2]*.2,j[2]*.1,j[2]*.1,j[3],j[3],0);
+else DrawCircle(mx,my,j[2]/3,j[4],j[4],1,1,16,j[2]/3);

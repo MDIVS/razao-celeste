@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>image_alpha = 0;
 To = -1;
+A[0] = 0; //animação step-index
+A[1] = 0; //animação jump-index
+Tex_1 = background_get_texture(tx_sol);
 
 BConf[0] = DW-64;
 BConf[1] = 64;
@@ -39,7 +42,7 @@ BConq[2] = 0;
 BConq[3] = 0;
 
 BQuiz[0] = DW/2;
-BQuiz[1] = DH/2-128;
+BQuiz[1] = DH/2-128+8;
 BQuiz[2] = 0;
 BQuiz[3] = 0;
 
@@ -48,15 +51,18 @@ BNave[1] = DH/2+80;
 BNave[2] = 0;
 BNave[3] = 0;
 
-BSoSy[0] = DW/2-128;
-BSoSy[1] = DH/2-96;
+BSoSy[0] = DW/2-128-24;
+BSoSy[1] = DH/2-96+16;
 BSoSy[2] = 0;
-BSoSy[3] = 0;
 
-BCamp[0] = DW/2+128;
-BCamp[1] = DH/2-96;
+BCamp[0] = DW/2+128+24;
+BCamp[1] = DH/2-96+16;
 BCamp[2] = 0;
 BCamp[3] = 0;
+
+BIBDP[0] = DW/2;
+BIBDP[1] = DH*2;
+BIBDP[2] = 1;
 
 instance_create(DW/2,-200,oAstrocoin);
 instance_create(0,0,oAgente9);
@@ -82,7 +88,11 @@ instance_create(0,0,oAgente9);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ini_open("Salvo.ini");
+            <string>if keyboard_check_pressed(ord("X")) {
+    instance_destroy();
+    instance_create(0,0,io_marte);
+}
+ini_open("Salvo.ini");
 Astrocoins = ini_read_real("OBA","Astrocoins",0);
 
 var mx = device_mouse_x_to_gui(0);
@@ -90,16 +100,13 @@ var my = device_mouse_y_to_gui(0);
 var mj = device_mouse_check_button_pressed(0,mb_left);
 var mk = device_mouse_check_button(0,mb_left);
 
-BConf[2] = image_alpha;
+A[0]++;
+BSoSy[2] += (64-BSoSy[2])/10;
+
 BConq[2] = image_alpha;
 BQuiz[2] = image_alpha;
 BNave[2] = image_alpha;
-BSoSy[2] = image_alpha;
 BCamp[2] = image_alpha;
-
-if BConf[3] {BConf[2]/=2;
-    BConf[3] = mk&amp;&amp;point_in_circle(mx,my,BConf[0],BConf[1],48);
-    if !mk {To=ini_config;PlaySom(sound1,0,VSom,0)}}
     
 if BConq[3] {BConq[2]/=2;
     BConq[3] = mk&amp;&amp;point_in_circle(mx,my,BConq[0],BConq[1],48);
@@ -112,21 +119,15 @@ if BQuiz[3] {BQuiz[2]/=2;
 if BNave[3] {BNave[2]/=2;
     BNave[3] = mk&amp;&amp;point_in_circle(mx,my,BNave[0],BNave[1],96);
     if !mk {To=scr_to;instance_create(0,0,io_nave);PlaySom(sound1,0,VSom,0)}}
-
-if BSoSy[3] {BSoSy[2]/=2;
-    BSoSy[3] = mk&amp;&amp;point_in_circle(mx,my,BSoSy[0],BSoSy[1],64);
-    if !mk {To=scr_to;instance_create(0,0,io_sosy);PlaySom(sound1,0,VSom,0)}}
     
 if BCamp[3] {BCamp[2]/=2;
     BCamp[3] = mk&amp;&amp;point_in_circle(mx,my,BCamp[0],BCamp[1],64);
     if !mk {room_goto(rm_campanha); PlaySom(sound1,0,VSom,0)}}
 
 if image_alpha == 1 &amp;&amp; mj {
-    if point_in_circle(mx,my,BConf[0],BConf[1],48) BConf[3] = 1;
     if point_in_circle(mx,my,BConq[0],BConq[1],48) BConq[3] = 1;
     if point_in_circle(mx,my,BQuiz[0],BQuiz[1],64) BQuiz[3] = 1;
     if point_in_circle(mx,my,BNave[0],BNave[1],96) BNave[3] = 1;
-    if point_in_circle(mx,my,BSoSy[0],BSoSy[1],64) BSoSy[3] = 1;
     if point_in_circle(mx,my,BCamp[0],BCamp[1],64) BCamp[3] = 1;
 }
 
@@ -139,6 +140,53 @@ if To!=-1 {
     }
 }
 ini_close();
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if BIBDP[2] {
+    BIBDP[0] += (DW/2-BIBDP[0])/10;
+    BIBDP[1] += (DH-60-BIBDP[1])/10;
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///testing mercury interface
+if keyboard_check(vk_control)&amp;&amp;keyboard_check_pressed(vk_shift) {instance_destroy(); instance_create(0,0,io_mercurio)};
 </string>
           </argument>
         </arguments>
@@ -165,14 +213,19 @@ ini_close();
 var s = max(DW/1280,DH/1024);
 draw_background_ext(bg_CRU,DW/2-640*s,DH/2-512*s,s,s,0,-1,image_alpha);
 
-draw_sprite_ext(spr_bconf,0,BConf[0],BConf[1],1,1,image_index,-1,BConf[2]);
+if BACircle(BSoSy[0],BSoSy[1],BSoSy[2],"",c_orange,24,-image_index)&amp;&amp;To==-1 {To=scr_to;instance_create(0,0,io_sosy);PlaySom(sound1,0,VSom,0)};
+dra_planet(BSoSy[0],BSoSy[1],BSoSy[2]*.91,1,image_index,0,Tex_1);
+
 draw_sprite_ext(spr_bconq,0,BConq[0],BConq[1],1,1,0,-1,BConq[2]);
 draw_sprite_ext(spr_bquiz,0,BQuiz[0],BQuiz[1],1,1,0,-1,BQuiz[2]);
 draw_sprite_ext(spr_bedit,0,BNave[0],BNave[1],1,1,0,-1,BNave[2]);
-draw_sprite_ext(spr_bsosy,0,BSoSy[0],BSoSy[1],1,1,0,-1,BSoSy[2]);
 draw_sprite_ext(spr_bcamp,0,BCamp[0],BCamp[1],1,1,0,-1,BCamp[2]);
 
-if B6(MA,DW/2-192,DH-60,DW/2+192,DH-20,"Instituições de pesquisa em Astronomia",32,16743936) {To=ini_biblioteca;PlaySom(sound1,0,VSom,0)};
+if Bspr(MA,spr_bconf,0,BConf[0],BConf[1]) {To=ini_config; PlaySom(sound1,0,VSom,0)};
+if bmiddlecenter_arial12bold(BIBDP[0],BIBDP[1],"Onde pesquisar?",16743984) {To=ini_biblioteca;PlaySom(sound1,0,VSom,0)};
+
+draw_set_alpha(1);
+
 </string>
           </argument>
         </arguments>

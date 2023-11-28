@@ -25,22 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_alpha = 0;
-To = -1;
+            <string>BA_x = DW/3;
+BB_x = DW/3*2;
 
-BC[0,0] = "ASTRONÁUTICA";
-BC[0,1] = 0;
-BC[0,2] = 0;
-BC[0,3] = ini_SOBAAstronautica;
+BA_y = DH/2;
+BB_y = DH/2;
 
-BC[1,0] = "ASTRONOMIA";
-BC[1,1] = 0;
-BC[1,2] = 0;
-BC[1,3] = ini_SOBAAstronomia;
+BA_r = 0;
+BB_r = 0;
 
-BBack[0] = DW-128;
-BBack[1] = 77;
-BBack[2] = 0;
+BA_a = 0;
+BB_a = 0;
+
+Bindex = 0;
 
 ini_open("Salvo.ini");
 Astrocoins = ini_read_real("OBA","Astrocoins",0);
@@ -67,48 +64,9 @@ ini_close();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if((image_index mod 10)==0)part_particles_create(GUIPARTSY,DW/2,DH/2,parts.starsbackground,1);
-
-ini_open("Salvo.ini");
-
-var mx = device_mouse_x_to_gui(0);
-var my = device_mouse_y_to_gui(0);
-var mcheck = device_mouse_check_button(0,mb_left);
-
-var xx, yy;
-for (var i=0; i&lt;array_height_2d(BC); i++) {
-    if BC[i,2] {
-        xx = DW/2+224*(((i+1) mod 3)-1);
-        yy = DH/2+224*floor(i/3);
-        
-        BC[i,2] = device_mouse_check_button(0,mb_left)&amp;&amp;point_in_rectangle(mx,my,xx-96,yy-96,xx+96,yy+96);
-        if !device_mouse_check_button(0,mb_left) {To=BC[i,3];PlaySom(sound1,0,VSom,0)}}}
-    
-if BBack[2] {
-    BBack[2] = device_mouse_check_button(0,mb_left)&amp;&amp;point_in_rectangle(mx,my,BBack[0]-32,BBack[1]-32,BBack[0]+32,BBack[1]+32);
-    if !device_mouse_check_button(0,mb_left) {instance_create(0,0,io_quizmodes);To=scr_to;PlaySom(sound1,0,VSom,0)}}
-
-if image_alpha == 1 &amp;&amp; device_mouse_check_button_pressed(0,mb_left) {
-    var xx, yy;
-    for (var i=0; i&lt;array_height_2d(BC); i++) {
-        xx = DW/2+224*(((i+1) mod 3)-1);
-        yy = DH/2+224*floor(i/3);
-        if point_in_rectangle(mx,my,xx-96,yy-96,xx+96,yy+96) BC[i,2] = 1;
-    }
-    
-    if point_in_rectangle(mx,my,BBack[0]-32,BBack[1]-32,BBack[0]+32,BBack[1]+32) BBack[2] = 1;
-}
-
-image_alpha = min(image_alpha+1/30,1);
-if To!=-1 {
-    image_alpha = max(0,image_alpha-.134);
-    if image_alpha == 0 {
-        instance_destroy();
-        script_execute(To);
-    }
-}
-
-ini_close();
+            <string>BA_r += (80-BA_r)/10;
+BB_r += (80-BB_r)/10;
+Bindex++;
 </string>
           </argument>
         </arguments>
@@ -140,25 +98,89 @@ draw_text(DW/2,64,"QUIZ FRENÉTICO");
 draw_set_font(arialbold12);
 draw_text(DW/2,90,"Aprender é divertido");
 
-var al = array_height_2d(BC);
-
-var r = 96-96*sqr(1-image_alpha);
-var w = 8;
-
-var xx, yy, cc;
-for (var i=0; i&lt;al; i++) {
-    xx = DW/2+224*(((i+1) mod 3)-1);
-    yy = DH/2+224*floor(i/3);
-    cc = (c_white*(BC[i,1]==0)+c_aqua*(BC[i,1]==1))*(!BC[i,2])+16711902*BC[i,2];
-    draw_set_colour(cc);
-    DrawCircle(xx,yy,r*.85,c_.myblue,c_.myblue,image_alpha,image_alpha,24,r*.85);
-    DrawCircle(xx,yy,r,cc,cc,image_alpha,0,24,r*.15);
-    draw_text_transformed(xx,yy,BC[i,0],1-1*sqr(1-image_alpha),1-1*sqr(1-image_alpha),0);
+if BTech(BA_x,BA_y,BA_r,"Astronomia",c_.myblue,32,-Bindex) {
+    var qlist1, qlist2;
+    qlist1[0] = SOBA_000;
+    qlist1[1] = SOBA_001;
+    qlist1[2] = SOBA_002;
+    qlist1[3] = SOBA_003;
+    qlist1[4] = SOBA_004;
+    qlist1[5] = SOBA_005;
+    qlist1[6] = SOBA_006;
+    qlist1[7] = SOBA_007;
+    qlist1[8] = SOBA_008;
+    qlist1[9] = SOBA_010;
+    qlist1[10] = SOBA_011;
+    qlist1[11] = SOBA_012;
+    qlist1[12] = SOBA_013;
+    qlist1[13] = SOBA_014;
+    qlist1[14] = SOBA_015;
+    qlist1[15] = SOBA_016;
+    qlist1[16] = SOBA_020;
+    qlist1[17] = SOBA_021;
+    qlist1[18] = SOBA_022;
+    qlist1[19] = SOBA_023;
+    qlist1[20] = SOBA_024;
+    qlist1[21] = SOBA_025;
+    qlist1[22] = SOBA_026;
+    qlist1[23] = SOBA_027;
+    qlist1[24] = SOBA_028;
+    qlist1[25] = SOBA_030;
+    qlist1[26] = SOBA_031;
+    qlist1[27] = SOBA_032;
+    qlist1[28] = SOBA_033;
+    qlist1[29] = SOBA_034;
+    qlist1[30] = OBA_ASTRONOMIA1_016;
+    qlist1[31] = OBA_ASTRONOMIA1_018;
+    qlist1[32] = OBA_ASTRONOMIA1_019;
+    qlist1[33] = OBA_ASTRONOMIA1_020;
+    qlist1[34] = OBA2018n3q1_1;
+    qlist1[35] = OBA2018n3q1_2;
+    qlist1[36] = OBA2018n3q1_3;
+    qlist1[37] = OBA2018n3q1_4;
+    var i, ii;
+    for (i=0; i&lt;10; i++) {
+        ii = irandom(array_length_1d(qlist1)-1-i);
+        qlist2[i] = qlist1[ii];
+        for (ii=ii; ii&lt;array_length_1d(qlist1)-1; ii++) qlist1[ii] = qlist1[ii+1];
+    } qlist2[i] = endfrenetico_astronomia;
+    instance_create(0,0,obj_simulado);
+    obj_simulado.Questoes = qlist2;
+    instance_destroy();
 }
 
-draw_set_colour(c_white);
+if BTech(BB_x,BB_y,BB_r,"Astronáutica",c_.myblue,32,Bindex) {
+    var qlist1, qlist2;
+    qlist1[0] = OBA_ASTRONAUTICA1_001;
+    qlist1[1] = OBA_ASTRONAUTICA1_002;
+    qlist1[2] = OBA_ASTRONAUTICA1_003;
+    qlist1[3] = OBA_ASTRONAUTICA1_004;
+    qlist1[4] = OBA_ASTRONAUTICA1_005;
+    qlist1[5] = OBA_ASTRONAUTICA1_006;
+    qlist1[6] = OBA_ASTRONAUTICA1_007;
+    qlist1[7] = OBA_ASTRONAUTICA1_008;
+    qlist1[8] = OBA_ASTRONAUTICA1_009;
+    qlist1[9] = OBA_ASTRONAUTICA1_010;
+    qlist1[10] = OBA_ASTRONAUTICA1_011;
+    qlist1[11] = OBA_ASTRONAUTICA1_012;
+    qlist1[12] = OBA_ASTRONAUTICA1_013;  
+    var i, ii;
+    for (i=0; i&lt;10; i++) {
+        ii = irandom(array_length_1d(qlist1)-1-i);
+        qlist2[i] = qlist1[ii];
+        for (ii=ii; ii&lt;array_length_1d(qlist1)-1; ii++) qlist1[ii] = qlist1[ii+1];
+    } qlist2[i] = endfrenetico_astronomia;
+    instance_create(0,0,obj_simulado);
+    obj_simulado.Questoes = qlist2;
+    instance_destroy();
+};
 
-draw_sprite_ext(spr_back,0,BBack[0],BBack[1],1+BBack[2]/5,1+BBack[2]/5,0,-1,image_alpha);
+if Bspr(MA,spr_back,0,DW-128,77) {instance_destroy(); instance_create(0,0,io_quizmodes); PlaySom(sound1,0,VSom,0)};
+if bmiddlecenter_arial12bold(DW/3,DH-80,"Modo professor#(Em desenvolvimento)",c_.myblue) {
+    popup_create("Em desenvolvimento, desculpe.");
+    
+    
+}
 </string>
           </argument>
         </arguments>

@@ -36,7 +36,7 @@ Questoes = 10;
 BC[0] = DW/2;
 BC[1] = DH/2;
 BC[2] = 0;
-BC[3] = "INICIAR#QUIZ";
+//BC[3] = "INICIAR#QUIZ";
 BC[4] = 0;
 
 BBack[0] = DW-128;
@@ -125,25 +125,28 @@ ini_close();
             <kind>1</kind>
             <string>draw_set_alpha(image_alpha);
 draw_rectangle_colour(0,0,DW,DH,0,0,0,0,0);
+
 draw_set_font(algerian48);
 dra_imgtxtsource(spr_astrocoin,0,DW/2,32,Astrocoins,32);
-draw_set_font(arialbold12);
 
+draw_set_font(arialbold12);
 draw_text(DW/2,64,"Quiz Astronômico");
+
 draw_set_font(calibri11);
 draw_text(DW/2,90,"Aprender é divertido");
 
 DrawCircle(BC[0],BC[1],BC[2]*.8,12607232,12607232,image_alpha,image_alpha,32,BC[2]*.8);
 DrawCircle(BC[0],BC[1],BC[2],12607232,12607232,image_alpha/2,0,32,BC[2]*.2);
 draw_set_font(algerian16);
-draw_text_transformed(BC[0],BC[1],BC[3],BC[2]/96,BC[2]/96,0);
+draw_text_transformed(BC[0],BC[1]-BC[2]*.22,"INICIAR",BC[2]/64,BC[2]/64,lengthdir_x(6,image_index*2));
+draw_text_transformed(BC[0],BC[1]+BC[2]*.22,"QUIZ"   ,BC[2]/64+lengthdir_x(.1,image_index*3),BC[2]/64+lengthdir_x(.1,image_index*3),0);
 
 var xx = round(DW/4);
 var yy = round(DH/2);
 draw_set_font(algerian48);
 draw_text(xx,yy,Questoes);
 draw_set_font(arialbold12);
-if Bspr(Ma,spr_unitaddbutton,1,xx,yy-64) Questoes = min(17,Questoes+1);
+if Bspr(Ma,spr_unitaddbutton,1,xx,yy-64) Questoes = min(22,Questoes+1);
 if Bspr(Ma,spr_unitaddbutton,3,xx,yy+64) Questoes = max(1,Questoes-1);
 draw_text(xx,yy-104,"Questões");
 

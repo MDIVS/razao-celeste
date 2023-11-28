@@ -22,9 +22,9 @@
     <option_android_arch_mipsr2sf>false</option_android_arch_mipsr2sf>
     <option_android_arch_x86>True</option_android_arch_x86>
     <option_android_build_tools_version>28.0.3</option_android_build_tools_version>
-    <option_android_build_version>57</option_android_build_version>
+    <option_android_build_version>1</option_android_build_version>
     <option_android_color_depth>1</option_android_color_depth>
-    <option_android_compile_sdk_version>23</option_android_compile_sdk_version>
+    <option_android_compile_sdk_version>28</option_android_compile_sdk_version>
     <option_android_display_name>RAZÃO CELESTE</option_android_display_name>
     <option_android_facebook_app_display_name></option_android_facebook_app_display_name>
     <option_android_facebook_appid></option_android_facebook_appid>
@@ -50,9 +50,9 @@
     <option_android_licensing_enable>0</option_android_licensing_enable>
     <option_android_licensing_key></option_android_licensing_key>
     <option_android_lint>0</option_android_lint>
-    <option_android_major_version>1</option_android_major_version>
-    <option_android_min_sdk_version>9</option_android_min_sdk_version>
-    <option_android_minor_version>0</option_android_minor_version>
+    <option_android_major_version>0</option_android_major_version>
+    <option_android_min_sdk_version>16</option_android_min_sdk_version>
+    <option_android_minor_version>1</option_android_minor_version>
     <option_android_mmedia_ads>0</option_android_mmedia_ads>
     <option_android_moga>0</option_android_moga>
     <option_android_mopub_ads>0</option_android_mopub_ads>
@@ -65,7 +65,7 @@
     <option_android_package_company>mdivs</option_android_package_company>
     <option_android_package_domain>com</option_android_package_domain>
     <option_android_package_product>razaoceleste</option_android_package_product>
-    <option_android_permission_flags>28</option_android_permission_flags>
+    <option_android_permission_flags>12</option_android_permission_flags>
     <option_android_pocketchange_enable>0</option_android_pocketchange_enable>
     <option_android_pocketchange_id></option_android_pocketchange_id>
     <option_android_pocketchange_test_enable>0</option_android_pocketchange_test_enable>
@@ -77,7 +77,7 @@
     <option_android_splash_png>Configs\Default\android\splash.png</option_android_splash_png>
     <option_android_splash_time>0</option_android_splash_time>
     <option_android_support_lib_version>23.1.1</option_android_support_lib_version>
-    <option_android_target_sdk_version>23</option_android_target_sdk_version>
+    <option_android_target_sdk_version>28</option_android_target_sdk_version>
     <option_android_texture_page>2048</option_android_texture_page>
     <option_android_use_test_ads>0</option_android_use_test_ads>
     <option_androidfire_GPU_device>0</option_androidfire_GPU_device>
@@ -424,7 +424,7 @@
     <option_quitkey>true</option_quitkey>
     <option_resolution>0</option_resolution>
     <option_savekey>true</option_savekey>
-    <option_scale>-1</option_scale>
+    <option_scale>0</option_scale>
     <option_scaleprogress>true</option_scaleprogress>
     <option_sci_UseSCI>0</option_sci_UseSCI>
     <option_sci_serverLocation></option_sci_serverLocation>
@@ -479,14 +479,14 @@
     <option_use_new_audio>True</option_use_new_audio>
     <option_variableerrors>False</option_variableerrors>
     <option_version>100</option_version>
-    <option_version_build>17</option_version_build>
+    <option_version_build>3</option_version_build>
     <option_version_company>MDIVS</option_version_company>
     <option_version_copyright>MDIVS</option_version_copyright>
     <option_version_description>Um jogo sobre Astronomia</option_version_description>
-    <option_version_major>1</option_version_major>
+    <option_version_major>0</option_version_major>
     <option_version_minor>0</option_version_minor>
     <option_version_product>RAZÃO CELESTE</option_version_product>
-    <option_version_release>0</option_version_release>
+    <option_version_release>9</option_version_release>
     <option_win8_advertising_appid></option_win8_advertising_appid>
     <option_win8_advertising_enable>0</option_win8_advertising_enable>
     <option_win8_advertising_key></option_win8_advertising_key>
@@ -555,7 +555,7 @@
     <option_winUAP_wide_logo>Configs\Default\WindowsUAP\logos\WideLogo.scale-100.png</option_winUAP_wide_logo>
     <option_windowcolor>clBlack</option_windowcolor>
     <option_windows_alternate_sync_method>False</option_windows_alternate_sync_method>
-    <option_windows_build_version>13</option_windows_build_version>
+    <option_windows_build_version>3</option_windows_build_version>
     <option_windows_company_info>MDIVS</option_windows_company_info>
     <option_windows_copyright_info>MDIVS</option_windows_copyright_info>
     <option_windows_create_textures_on_demand>False</option_windows_create_textures_on_demand>
@@ -564,10 +564,10 @@
     <option_windows_game_icon>Configs\Default\windows\runner_icon.ico</option_windows_game_icon>
     <option_windows_license>Configs\Default\windows\License.txt</option_windows_license>
     <option_windows_mainor_version>0</option_windows_mainor_version>
-    <option_windows_major_version>1</option_windows_major_version>
+    <option_windows_major_version>0</option_windows_major_version>
     <option_windows_nsis_file>Configs\Default\windows\RunnerInstaller.nsi</option_windows_nsis_file>
     <option_windows_product_info>RAZÃO CELESTE</option_windows_product_info>
-    <option_windows_release_version>0</option_windows_release_version>
+    <option_windows_release_version>9</option_windows_release_version>
     <option_windows_runner_finished>Configs\Default\windows\Runner_finish.bmp</option_windows_runner_finished>
     <option_windows_runner_header>Configs\Default\windows\Runner_header.bmp</option_windows_runner_header>
     <option_windows_save_location>0</option_windows_save_location>

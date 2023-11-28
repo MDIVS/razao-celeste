@@ -1,34 +1,31 @@
 #define BTech
-///BTech( MA, index, x, y, raio, txt, col )
-/*
-    This script draw a counturned circle and check if the
-    mouse has pressed and released inside the counturned circle.
-    In this script, the text is drawned in one more down inside the cirle.
-    
-    A MDIVS script
-*/
-var psa=argument0, index=argument1;
-var xx=argument2, yy=argument3, rr=argument4;
-var tt=argument5, c1=argument6, a1=draw_get_alpha(), a2=a1;
+///BTech( x, y, r, t, c, p, i )
+var xx=argument0, yy=argument1, rr=argument2, tt=argument3, c1=argument4;
+var pp=argument5, ix=argument6, a1=draw_get_alpha(), a2=a1, c2=merge_colour(c1,0,.8);
+var pc=point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),xx,yy,rr);
+if pc&&os_type==os_windows cursor_sprite=spr_cursor2;
 
-for (var i=0; i<array_length_1d(MA); i++) {
-    if (device_mouse_check_button_pressed(i,mb_left) && point_in_circle(device_mouse_x_to_gui(i),device_mouse_y_to_gui(i),xx,yy,rr)) psa[@i]="B2 "+string(xx)+","+string(yy);
-    if (psa[i]=="B2 "+string(xx)+","+string(yy)) {a2/=2;
-        if (!point_in_circle(device_mouse_x_to_gui(i),device_mouse_y_to_gui(i),xx,yy,rr)) psa[@i]="";
-        if (!device_mouse_check_button(i,mb_left)) {psa[@i]="";return(1)};
-    }
+if device_mouse_check_button_pressed(0,mb_left)&&pc MA[0]="b"+string(xx)+","+string(yy);
+if MA[0]=="b"+string(xx)+","+string(yy) {
+    a2/=2;
+    if !pc MA[0]="";
+    if !device_mouse_check_button(0,mb_left) {MA[0]=""; return(1)};
 }
 
 //draw circles
-var pp=ceil(pi*rr/6),c2=draw_get_colour();
-draw_set_colour(c1);
-draw_set_alpha(a2);
-_dc_(xx,yy,rr,rr*.1,pp/4,index,index+90);
-_dc_(xx,yy,rr*.975,rr*.05,pp/4,90-index,180-index);
-_dc_(xx,yy,rr*.8,rr*.1,pp,0,360);
-draw_text(xx,yy,tt);
+DrawCircle(xx,yy,rr*.8,c2,c2,a2,a2,pp,rr*.8);
+DrawCircle(xx,yy,rr*.8,c1,c1,a2,a2,pp,rr*.066);
+
+draw_set_alpha(a2/3*2);
+DrawCircle_ext(xx,yy,rr*.9,ix,ix+45,c1,c1,ceil(pp/8),rr*.05);
+DrawCircle_ext(xx,yy,rr*.9,-ix*1.3,-ix*1.3-45,c1,c1,ceil(pp/8),rr*.05);
+
+draw_set_alpha(a2/3);
+DrawCircle_ext(xx,yy,rr,120-30+ix*2,120+30+ix*2,c1,c1,ceil(pp/6),rr*.05);
+DrawCircle_ext(xx,yy,rr,300-30-ix*1.7,300+30-ix*1.7,c1,c1,ceil(pp/6),rr*.05);
 draw_set_alpha(a1);
-draw_set_colour(c2);
+
+draw_text_colour(xx,yy,tt,c1,c1,c1,c1,a2);
 return(0);
 
 #define _dc_

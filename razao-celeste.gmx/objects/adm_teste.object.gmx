@@ -50,8 +50,10 @@ DRing = 0;
           <argument>
             <kind>1</kind>
             <string>if instance_exists(VIEW_OBJECT) {
-    view_xview = VIEW_OBJECT.x-view_wview/2;
-    view_yview = VIEW_OBJECT.y-view_hview/2;
+    view_wview += (VIEW_OBJECT.sprite_width*15-view_wview)/10;
+    view_hview = DH/DW*view_wview;
+    view_xview += (VIEW_OBJECT.x-view_wview/2-view_xview)/10;
+    view_yview += (VIEW_OBJECT.y-view_hview/2-view_yview)/10;
     background_x[0] = view_xview/2;
     background_y[0] = view_yview/2;
     background_x[1] = view_xview/3;

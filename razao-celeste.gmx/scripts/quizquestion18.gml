@@ -1,0 +1,14 @@
+var ic = instance_create(DW/5*1,DH/2,obj_quiz_alternativa);
+ic.Correta = 1;
+ic.Txt = "Júpiter";
+ic = instance_create(DW/5*2,DH/2,obj_quiz_alternativa);
+ic.Correta = 0;
+ic.Txt = "Marte";
+ic = instance_create(DW/5*3,DH/2,obj_quiz_alternativa);
+ic.Correta = 0;
+ic.Txt = "Vênus";
+ic = instance_create(DW/5*4,DH/2,obj_quiz_alternativa);
+ic.Correta = 0;
+ic.Txt = "Saturno";
+ic = instance_create(DW/2,DH/4,obj_quiz_confirmar);
+ic.Txt = "É gasoso. Tem anéis, mas não é Saturno. Tem forte campo magnético. Tem faixas coloridas em sua atmosfera, inclusive uma grande mancha. Tem a rotação mais rápida. Seu dia dura só dez horas e é o maior de todos. Qual o nome deste planeta?";

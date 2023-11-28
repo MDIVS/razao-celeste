@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>Raio = 0;
+            <string>y = (DH-DW/10)-(DW/10);
+image_index = random(1000);
+Raio = 0;
 Raio_to = DW/10;
 
 Txt = "";
@@ -99,6 +101,7 @@ else if Nome==4 Nome = "D";
             <kind>1</kind>
             <string>image_xscale = Raio/(DW/10);
 image_yscale = image_xscale;
+if sprite_index==-1 image_angle=lengthdir_x(3,image_index);
 
 if Confirmar {
     AniEnd++;
@@ -124,8 +127,8 @@ if ein!=-1 {
     if !device_mouse_check_button(ein.DeviceDrag,mb_left) {
         if Selecionado[ein.N] Selecionado[ein.N]=0 else {
             with(obj_quiz_alternativa) Selecionado[ein.N] = 0;
-            Selecionado[ein.N]=!Selecionado[ein.N];
-            SelecionadoId[ein.N] = ein;
+            Selecionado[ein.N]=1;
+            SelecionadoId[ein.N]=ein;
         }
         PlaySom(sound1,0,VSom,0);
     };
@@ -168,8 +171,9 @@ if sprite_index!=-1 draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,im
 
 draw_set_font(algerian48);
 draw_text_transformed(x+lengthdir_x(Raio,135),y+lengthdir_y(Raio,135),Nome,image_xscale,image_yscale,45);
+draw_set_font(arialbold20);
+draw_text_ext_transformed(x,y,Txt,30,DW/8,image_xscale,image_yscale,image_angle);
 draw_set_font(arialbold12);
-draw_text_ext_transformed(x,y,Txt,16,DW/8,image_xscale,image_yscale,0);
 </string>
           </argument>
         </arguments>

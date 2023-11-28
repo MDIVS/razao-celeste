@@ -1,11 +1,9 @@
 #define agente9_bemvindoaojogo
 if ini_read_real("Conq","Primeira Arma",0)||ini_read_real("OBA","Astrocoins",0)>=5 return(0);
 
-Chat_txt = "Olá comandante, seja bem vindo(a).##Sou a 9° e última agente das Tropas Cruzeiras.##Por ser a última, pode me chamar de Agente 9.";
-Chat_count = 0;
-xto = DW/3;
-yto = DH/2;
-sto = DH/5/sprite_get_width(sprite_index);
+personchat_txt(Chat,"Olá comandante, seja bem vindo(a) ao jogo.#Sou a nona agente, sua guia nesta aventura!");
+owms_set_topoint(OWMS,DW/3,DH/2);
+owms_toscale(OWMS,DH/7/sprite_get_height(sprite_index));
 
 bAct[0,0] = "Certo, Agente 9.";
 bAct[0,1] = agente9_iniprimeirosastrocoins;
@@ -22,6 +20,7 @@ with(io_menu) {
     BSoSy[1]=DH+200;
     BCamp[1]=DH+200;
     BNave[1]=DH+200;
+    BIBDP[2]=0;
 }
 
 return(1);
@@ -31,18 +30,13 @@ ini_open("Salvo.ini");
 if ini_read_real("Conq","Primeira Arma",0)||ini_read_real("OBA","Astrocoins",0)>=5 {ini_close();return(0)}
 ini_close();
 
-Chat_txt = "Esse é o Astrocoin, sua principal moeda de troca.#Pegue alguns Astrocoins, considere um presente de boas vindas.";
-Chat_count = 0;
-xto = DW/3;
-yto = DH/2;
-sto = DH/5/sprite_get_width(sprite_index);
+personchat_txt(Chat,"Esse é o Astrocoin, sua principal moeda de troca.#Pegue alguns Astrocoins, considere um presente de boas vindas.");
 
 bAct[0,0] = "Pegar Astrocoin";
 bAct[0,1] = agente9_primeiroastrocoinend;
 iAct = 0;
 
-oAstrocoin.xto = xto+Chat_addx+Chat_wmax/2;
-oAstrocoin.yto = yto+Chat_addy+Chat_h+64;
+STP = agente9_iniprimeirosastrocoins_stp;
 
 with(io_menu) {
     BConf[1]=-200;
@@ -51,11 +45,17 @@ with(io_menu) {
     BSoSy[1]=DH+200;
     BCamp[1]=DH+200;
     BNave[1]=DH+200;
+    BIBDP[2]=0;
 }
 
 return(1);
 
+#define agente9_iniprimeirosastrocoins_stp
+oAstrocoin.xto = owms_tox(OWMS)+personchat_x1(Chat)+personchat_width(Chat)/2;
+oAstrocoin.yto = owms_toy(OWMS)+personchat_y2(Chat)+128;
+
 #define agente9_primeiroastrocoinend
+STP = -1;
 ini_open("Salvo.ini");
 ini_write_real("OBA","Astrocoins",ini_read_real("OBA","Astrocoins",0)+6);
 agente9_inidefinirnave();

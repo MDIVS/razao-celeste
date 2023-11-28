@@ -1,5 +1,5 @@
 ///ctrlviewmouse()
-if mouse_wheel_up(){
+if mouse_wheel_up() {
     var wadd = view_wview*.2;
     var hadd = view_hview*.2;
     view_xview-=wadd/2;
@@ -16,14 +16,14 @@ if mouse_wheel_down(){
     view_hview+=hadd;
 }
 
-if device_mouse_check_button_pressed(0,mb_left)&&MA[0]==""&&!point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),Joys_x(JOYS),Joys_y(JOYS),Joys_r(JOYS)){
+if device_mouse_check_button_pressed(0,mb_left)&&MA[0]==""&&Joys_device(JOYS)!=0 {
     MA[0] = "viewmove";
     VIEW_MOUSE_X = device_mouse_x(0);
     VIEW_MOUSE_Y = device_mouse_y(0);
 }
     
 if MA[0]=="viewmove"{
-    if !device_mouse_check_button(0,mb_left){MA[0]="";exit};
+    if !device_mouse_check_button(0,mb_left)||Joys_device(JOYS)==0{MA[0]="";exit};
     if device_mouse_check_button_pressed(1,mb_left)&&MA[1]==""&&!point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),Joys_x(JOYS),Joys_y(JOYS),Joys_r(JOYS)){
         MA[1]="zoom";
         VIEW_MOUSE_DIS = point_distance(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),device_mouse_x_to_gui(1),device_mouse_y_to_gui(1));

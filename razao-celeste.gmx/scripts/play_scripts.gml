@@ -7,7 +7,7 @@ instance_create(0,0,obj_Mercurio);
 instance_create(0,0,obj_Venus);
 
 #define jogar_terra
-instance_create(0,0,io_terra);
+instance_create(0,0,obj_Terra);
 
 #define jogar_marte
 instance_create(0,0,obj_Marte);

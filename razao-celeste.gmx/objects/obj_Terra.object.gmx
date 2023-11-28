@@ -26,9 +26,18 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited();
+PLANETA = id;
+VIEW_OBJECT = instance_create(200,200,obj_pmg);
+instance_create(DW-64,64,obj_pause);
+instance_create(lengthdir_x(2000,80),lengthdir_y(2000,80),obj_imp);
+instance_create(lengthdir_x(2000,60),lengthdir_y(2000,60),obj_imp);
+instance_create(lengthdir_x(2000,40),lengthdir_y(2000,40),obj_imp);
+instance_create(lengthdir_x(5000,60),lengthdir_y(5000,60),obj_img);
 
 if audio_is_playing(BMus)audio_stop_sound(BMus);
 BMus=PlaySom(bmus_ivan_1,1,VMus,1000);
+
+TIMER = 30*60*5;
 
 BigSurf = surface_create(256,256);
 LowSurf = surface_create(32,32);
@@ -96,17 +105,33 @@ sat = 0;
 if !surface_exists(BigSurf) BigSurf = surface_create(256,256);
 if !surface_exists(LowSurf) LowSurf = surface_create(32,32);
 
-if !instance_exists(oLuana)&amp;&amp;!instance_exists(obj_battlestatus)&amp;&amp;(TIMER&lt;=0||!instance_exists(obj_nvplayer)||!instance_exists(obj_dropposition)) {
+if !instance_exists(obj_battlestatus)&amp;&amp;(TIMER&lt;=0||!instance_exists(obj_nvplayer)||instance_number(obj_nvinimigo)==0) {
     var i = instance_create(0,0,obj_battlestatus);
-    i.MetasTXT[0] = "Dirija-se às regiões destacadas antes do término do tempo";
+    i.MetasTXT[0] = "Derrote dois inimigos";
+    i.MetasTXT[1] = "Derrote três inimigos";
+    i.MetasTXT[2] = "Derrote todos os inimigos";
     i.MetasBOL[0] = 0;
+    i.MetasBOL[1] = 0;
+    i.MetasBOL[2] = 0;
     
     var gameover = 1;
     ini_open("Salvo.ini");
-    if !instance_exists(obj_dropposition) {
+    if instance_number(obj_nvinimigo)==2{
         gameover = 0;
         i.MetasBOL[0] = 1;
-        ini_write_real("Terra","Fase",max(ini_read_real("Terra","Fase",0),1));
+        if ini_read_real("CONQUISTAS",string_upper(Nome),0)&lt;1 ini_write_real("CONQUISTAS",string_upper(Nome),1);
+    }
+    
+    if instance_number(obj_nvinimigo)==1{
+        gameover = 0;
+        i.MetasBOL[1] = 1;
+        if ini_read_real("CONQUISTAS",string_upper(Nome),0)&lt;2 ini_write_real("CONQUISTAS",string_upper(Nome),2);
+    }
+    
+    if instance_number(obj_nvinimigo)==0{
+        gameover = 0;
+        i.MetasBOL[2] = 1;
+        if ini_read_real("CONQUISTAS",string_upper(Nome),0)&lt;3 ini_write_real("CONQUISTAS",string_upper(Nome),3);
     }
     ini_close();
     

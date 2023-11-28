@@ -2,7 +2,7 @@
 <object>
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
+  <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -25,19 +25,31 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>STP=-1;DRA=-1;GUI=-1;
-NewSTP=-1;NewDRA=-1;NewGUI=-1;
-Destroy=0;
+            <string>Questoes = 0;
+NQuestoes = 0;
+QIndex = 0;
+QNext = 0;
+QAlpha = 0;
+Acertos = 0;
+Erros = 0;
+Bar_x1 = round(DW*.1);
+Bar_x2 = round(DW*.9);
+Bar_ww = Bar_x2-Bar_x1;
+Bar_fg = Bar_ww;
+cFine = c_.myblue;
+cLoss = c_.myblue;
+Dobrado = 0;
 
-Pergunta[0]="Certo";
-Pergunta[1]="Errado";
-Resposta=0;
+Marcado[0] = 0;
+Marcado[1] = 0;
 
-Escolhido=0;
-Confirmado=0;
-Escolha=0;
-Certo=0;
-image_alpha=0;
+REF = 0;
+REF_text = "";
+REF_link = "";
+REF_x1 = 0;
+REF_y1 = 0;
+REF_x2 = 0;
+REF_y2 = 0;
 </string>
           </argument>
         </arguments>
@@ -60,14 +72,103 @@ image_alpha=0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>addalpha = 1/10;
-if Destroy||NewGUI!=-1||NewSTP!=-1||NewDRA!=-1 addalpha=-1/10;
-image_alpha=min(1,max(0,image_alpha+addalpha));
-if Destroy==1&amp;&amp;image_alpha==0{instance_destroy();exit};
-if image_alpha==0{
-    STP=NewSTP;DRA=NewDRA;GUI=NewGUI;
-    NewSTP=-1;NewDRA=-1;NewGUI=-1;
+            <string>if is_array(Questoes) {
+    NQuestoes = array_length_1d(Questoes)-1;
+    Bar_fg = Bar_ww/NQuestoes;
 }
+
+if QNext {
+    cFine = c_lime;
+    cLoss = c_red;
+    QAlpha = max(0,QAlpha-1/room_speed/3);
+    if QAlpha==0 {
+        cFine=c_.myblue; cLoss=c_.myblue;
+        QNext=0; QIndex++;
+        REF=0; REF_text=""; REF_link="";
+        for (var i=0; i&lt;array_length_1d(Marcado); i++) Marcado[i]=0;
+        if QIndex==NQuestoes {
+            var n = 1+2*(Acertos/(Acertos+Erros)&gt;=.7);
+            ini_open("Salvo.ini");
+            ini_write_real("OBA","Astrocoins",ini_read_real("OBA","Astrocoins",0)+n);
+            ini_close();
+            popup_create(string(n),spr_astrocoin);
+            if instance_exists(oAdMob) {
+                GoogleMobileAds_AddBanner(oAdMob.BannerId,GoogleMobileAds_Smart_Banner);
+                if oAdMob.RewardedLoaded GoogleMobileAds_LoadRewardedVideo(oAdMob.RewardedId);
+            }
+            PlaySom(sound4,0,VSom,0);
+        }
+    };
+} else {QAlpha = min(1,QAlpha+1/room_speed)};
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Referencia
+if REF&amp;&amp;REF_link!=""&amp;&amp;point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),REF_x1,REF_y1,REF_x2,REF_y2)&amp;&amp;device_mouse_check_button_pressed(0,mb_left) tourl(REF_link);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>ini_open("Salvo.ini");
+draw_set_alpha(QAlpha);
+if NQuestoes &gt; 0 script_execute(Questoes[QIndex]);
+draw_set_alpha(1);
+ini_close();
+
+draw_roundrect_colour(Bar_x1,16,Bar_x2,32,c_gray,c_gray,0);
+var xx = Bar_x1+Bar_fg*Acertos;
+if Acertos &gt; 0 draw_roundrect_colour(Bar_x1,16,xx,32,c_lime,c_lime,0);
+if Erros &gt; 0 draw_roundrect_colour(xx,16,xx+Bar_fg*Erros,32,c_red,c_red,0);
+draw_set_alpha(.25);
+draw_roundrect(Bar_x1+16,20,Bar_x2-16,24,0);
+draw_set_alpha(1);
+
+if REF {
+    var pr = point_in_rectangle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),REF_x1,REF_y1,REF_x2,REF_y2)&amp;&amp;(os_type==os_windows||device_mouse_check_button(0,mb_left));
+    draw_set_colour(merge_colour(c_silver,c_.myblue2,pr));
+    draw_roundrect(REF_x1,REF_y1,REF_x2,REF_y2,0);
+    draw_set_colour(c_dkgray);
+    draw_roundrect(REF_x1+8,REF_y1+8,REF_x2-8,REF_y2-8,0);
+    draw_set_colour(merge_colour(c_silver,c_.myblue2,pr));
+    draw_text(REF_xx,REF_yy,REF_text);
+    draw_set_colour(c_white);
+}
+if Questoes[QIndex]!=endfrenetico_astronomia&amp;&amp;bmiddlecenter_arial12bold(DW-80,DH-48,"Sair",c_silver) {instance_create(0,0,io_menu);instance_destroy();PlaySom(sound1,0,VSom,0)};
 </string>
           </argument>
         </arguments>

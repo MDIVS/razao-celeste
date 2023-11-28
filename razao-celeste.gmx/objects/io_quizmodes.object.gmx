@@ -25,8 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_alpha = 0;
-To = -1;
+            <string>To = -1;
 
 BC[0,0] = "MODO#FRENÉTICO";
 BC[0,1] = "Responda a séries frenéticas de questões sobre Astronomia ou Astronáutica.";
@@ -130,24 +129,6 @@ if To!=-1 {
             <kind>1</kind>
             <string>var al = array_height_2d(BC);
 var ww = DW/al;
-var bw = ww/10;
-
-draw_set_alpha(image_alpha);
-draw_rectangle_colour(0,0,DW,DH,2100224,2100224,2100224,2100224,0);
-
-draw_set_font(algerian48);
-dra_imgtxtsource(spr_astrocoin,0,DW/2,32,Astrocoins,32);
-draw_set_font(arialbold12);
-
-for (var i=0; i&lt;al; i++) {
-    cc = c_dkgray*(!BC[i,2])+c_.myblue*BC[i,2];
-    draw_rectangle_colour(ww*i+bw,0,ww+ww*i-bw,DH,cc,cc,cc,cc,0);
-    draw_rectangle(ww*i+bw,0,ww+ww*i-bw,DH,1);
-    draw_set_font(algerian16);
-    draw_text(ww*i+ww/2,DH*.33,BC[i,0]);
-    draw_set_font(arialbold12);
-    draw_text_ext(ww*i+ww/2,DH*.66,BC[i,1],20,ww-bw*6);
-}
 
 draw_primitive_begin(pr_trianglefan);
 draw_vertex_colour(0,80,2100224,image_alpha);
@@ -166,6 +147,22 @@ draw_vertex_colour(0,DH-80,2100224,image_alpha);
 draw_vertex_colour(0,DH-150,2100224,0);
 draw_vertex_colour(DW,DH-150,2100224,0);
 draw_primitive_end();
+
+draw_set_alpha(image_alpha);
+
+var tri_y = DH/2-string_height_ext(BC[2,0],20,ww/2);
+for (var i=0; i&lt;al; i++) {
+    cc = 16256*(!BC[i,2])+c_orange*BC[i,2];
+    draw_set_colour(c_white);
+    dra_rtrian_glow(ww*i+ww/2,tri_y,ww*.4,lengthdir_x(12,image_index*5)+30*i,ww*.05,ww*.1,12);
+    draw_set_colour(cc);
+    dra_rtrian_ext(ww*i+ww/2,tri_y,ww*.3,lengthdir_x(12,image_index*5)+30*i,0,ww*.1,12);
+    draw_set_colour(c_white);
+    draw_set_font(algerian16);
+    draw_text(ww*i+ww/2,tri_y,BC[i,0]);
+    draw_set_font(arialbold12);
+    draw_text_ext(ww*i+ww/2,tri_y+ww*.4+64,BC[i,1],20,ww/2);
+}
 
 draw_sprite_ext(spr_back,0,BBack[0],BBack[1],1+BBack[2]/5,1+BBack[2]/5,0,-1,image_alpha);
 

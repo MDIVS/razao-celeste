@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>ini_open("Salvo.ini");
+image_speed = 0;
 event_inherited();
 
 Nome = "Módulo Grande";
@@ -51,21 +52,24 @@ for (var i=0; i&lt;n; i++) {
     var emy = ini_read_real(Nome,"Weapemy"+string(i),obj_nvinimigo);
     add_weapon(Weap,dis,dir,dir,scr,emy);
 }
-ini_close();
 
 Vida[0] = 25;
 Vida[1] = 25;
 Vida[2] = 0;
 
 Spd[0] = 0;
-Spd[1] = 180/30;
-Spd[2] = Spd[1]/90;
+Spd[1] = ini_read_real(Nome,"Speed_max",180/30);
+Spd[2] = ini_read_real(Nome,"Aceleration",Spd[1]/90);
 Acel = 0;
 Frei = 0;
 
 RA[0] = 1000;
 RA[1] = 750;
 RA[2] = 200;
+
+//Custom screen settings
+CS_GUI = CS_PMG;
+ini_close();
 </string>
           </argument>
         </arguments>

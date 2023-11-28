@@ -29,26 +29,49 @@
 To = -1;
 
 BSol[0] = DW/2;
-BSol[1] = DH/2;
+BSol[1] = DH*.8;
 BSol[2] = 0;
 
-BTel[2] = 0;
-BTel[3] = irandom(360);
-BTel[0] = BSol[0]+lengthdir_x(BTel[2],BTel[3]);
-BTel[1] = BSol[1]+lengthdir_y(BTel[2],BTel[3]);
-BTel[4] = 0;
+Camera = ini_cam3d(0,0,0,30,-15,66,1);
+Foco = -1;
+Foco_old = Foco;
+
+var r = 64;
+SMT = ini_submenu(DW*.65-r,DH*.8-r);
+SMG = ini_submenu(DW*.8-r,DH*.8-r);
+
+submenu_bx(SMT,DW*.65-r); submenu_wx(SMT,DW*.65-r);
+submenu_bx(SMG,DW*.8-r); submenu_wx(SMG,DW*.8-r);
+
+submenu_by(SMT,DH*.8-r); submenu_wy(SMT,DH*.8-r*7.5+r*1.5*(os_type==os_android));
+submenu_by(SMG,DH*.8-r); submenu_wy(SMG,DH*.8-r*7.5+r*1.5*(os_type==os_android));
+
+submenu_bw(SMT,r*2); submenu_ww(SMT,r*2);
+submenu_bw(SMG,r*2); submenu_ww(SMG,r*2);
+
+submenu_bh(SMT,r*2); submenu_wh(SMT,r*8.5-r*1.5*(os_type==os_android));
+submenu_bh(SMG,r*2); submenu_wh(SMG,r*8.5-r*1.5*(os_type==os_android));
+
+submenu_br(SMT,r); submenu_wr(SMT,r/2);
+submenu_br(SMG,r); submenu_wr(SMG,r/2);
+
+submenu_bt(SMT,"Telúricos"); submenu_wt(SMT,"Telúricos");
+submenu_bt(SMG,"Gasosos"); submenu_wt(SMG,"Gasosos");
+
+submenu_bc(SMT,c_.myblue); submenu_wc(SMT,c_.myblue2);
+submenu_bc(SMG,c_aqua); submenu_wc(SMG,16760384);
+
+submenu_wscr(SMT,scr_sosysmt);
+submenu_wscr(SMG,scr_sosysmg);
+
+submenu_borderw(SMT,r/5);
+submenu_borderw(SMG,r/5);
 
 BAst[2] = 0;
 BAst[3] = irandom(360);
 BAst[0] = BSol[0]+lengthdir_x(BAst[2],BAst[3]);
 BAst[1] = BSol[1]+lengthdir_y(BAst[2],BAst[3]);
 BAst[4] = 0;
-
-BGas[2] = 0;
-BGas[3] = irandom(360);
-BGas[0] = BSol[0]+lengthdir_x(BTel[2],BTel[3]);
-BGas[1] = BSol[1]+lengthdir_y(BTel[2],BTel[3]);
-BGas[4] = 0;
 
 BOrt[2] = 0;
 BOrt[3] = irandom(360);
@@ -59,6 +82,41 @@ BOrt[4] = 0;
 BBack[0] = DW-64;
 BBack[1] = 48;
 BBack[2] = 0;
+
+instance_create(0,0,oAgente9);
+instance_create(0,0,soi_sol);
+instance_create(0,0,soi_mercurio);
+instance_create(0,0,soi_venus);
+instance_create(0,0,soi_terra);
+instance_create(0,0,soi_marte);
+instance_create(0,0,soi_jupiter);
+instance_create(0,0,soi_saturno);
+instance_create(0,0,soi_urano);
+instance_create(0,0,soi_netuno);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>cam3d_destroy(Camera);
+with(soi_father) instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -81,20 +139,145 @@ BBack[2] = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>BTel[2] = DW*.1-DW*.1*sqr(1-image_alpha);
-BTel[3] = 0;
-BTel[0] = BSol[0]+lengthdir_x(BTel[2],BTel[3]);
-BTel[1] = BSol[1]+lengthdir_y(BTel[2],BTel[3]);
+            <string>///Controle de variações de foco
+if Foco!=Foco_old {
+    switch(Foco) {
+        case -1:
+            agente9_speak("Este é o Sistema Solar");
+            PlaySom(sound1,0,VSom,0);
+            break;
+        
+        case 0: agente9_speak("Este é o Sol"); break;
+        case 1: agente9_speak("Estes são os Planetas Telúricos do Sistema Solar"); break;
+        case 2: agente9_speak("Este é Mercúrio"); break;
+        case 3: agente9_speak("Este é Vênus"); break;
+        case 4: agente9_speak("Este é Terra"); break;
+        case 5: agente9_speak("Este é Marte"); break;
+        case 6: agente9_speak("Estes são os Planetas Gasosos do Sistema Solar"); break;
+        case 7: agente9_speak("Este é Júpiter"); break;
+        case 8: agente9_speak("Este é Saturno"); break;
+        case 9: agente9_speak("Este é Urano"); break;
+        case 10: agente9_speak("Este é Netuno"); break;
+        default: agente9_speak("Algo de errado não está certo.");
+    }
+    Foco_old = Foco;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Atuação do foco
+if Foco==-1 { //foco do Sistema Solar
+    Camera[0] += (soi_sol.x-Camera[0])/10;
+    Camera[1] += (soi_sol.y-Camera[1])/10;
+    Camera[2] += (soi_sol.z-Camera[2])/10;
+    Camera[5] += (2000-Camera[5])/10;
+} else if Foco==0 { //foco do Sol
+    Camera[0] += (soi_sol.x-Camera[0])/10;
+    Camera[1] += (soi_sol.y-Camera[1])/10;
+    Camera[2] += (soi_sol.z-Camera[2])/10;
+    Camera[5] += (128-Camera[5])/10;
+} else if Foco==1 { //foco dos Telúricos
+    Camera[0] += (soi_sol.x-Camera[0])/10;
+    Camera[1] += (soi_sol.y-Camera[1])/10;
+    Camera[2] += (soi_sol.z-Camera[2])/10;
+    Camera[5] += (800-Camera[5])/10;
+} else if Foco==2 { //foco de Mercúrio
+    Camera[0] = soi_mercurio.x;
+    Camera[1] = soi_mercurio.y;
+    Camera[2] = soi_mercurio.z;
+    Camera[5] += (128-Camera[5])/10;
+} else if Foco==3 { //foco de Vênus
+    Camera[0] = soi_venus.x;
+    Camera[1] = soi_venus.y;
+    Camera[2] = soi_venus.z;
+    Camera[5] += (128-Camera[5])/10;
+} else if Foco==4 { //foco da Terra
+    Camera[0] = soi_terra.x;
+    Camera[1] = soi_terra.y;
+    Camera[2] = soi_terra.z;
+    Camera[5] += (128-Camera[5])/10;
+} else if Foco==5 { //foco de Marte
+    Camera[0] = soi_marte.x;
+    Camera[1] = soi_marte.y;
+    Camera[2] = soi_marte.z;
+    Camera[5] += (128-Camera[5])/10;
+} else if Foco==6 { //foco dos Gasosos
+    Camera[0] += (soi_sol.x-Camera[0])/10;
+    Camera[1] += (soi_sol.y-Camera[1])/10;
+    Camera[2] += (soi_sol.z-Camera[2])/10;
+    Camera[5] += (2000-Camera[5])/10;
+} else if Foco==7 { //foco de Júpiter
+    Camera[0] = soi_jupiter.x;
+    Camera[1] = soi_jupiter.y;
+    Camera[2] = soi_jupiter.z;
+    Camera[5] += (128-Camera[5])/10;
+} else if Foco==8 { //foco de Saturno
+    Camera[0] = soi_saturno.x;
+    Camera[1] = soi_saturno.y;
+    Camera[2] = soi_saturno.z;
+    Camera[5] += (128-Camera[5])/10;
+} else if Foco==9 { //foco de Urano
+    Camera[0] = soi_urano.x;
+    Camera[1] = soi_urano.y;
+    Camera[2] = soi_urano.z;
+    Camera[5] += (128-Camera[5])/10;
+} else if Foco==10 { //foco de Netuno
+    Camera[0] = soi_netuno.x;
+    Camera[1] = soi_netuno.y;
+    Camera[2] = soi_netuno.z;
+    Camera[5] += (128-Camera[5])/10;
+} else if instance_exists(Foco) {
+    Camera[0] = Foco.x;
+    Camera[1] = Foco.y;
+    Camera[2] = Foco.z;
+    Camera[5] += Foco.Raio*5;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>cam3d_ctrlscreen(Camera);
+
+var rr = DW/30;
+BSol[2] += (rr-BSol[2])/10;
 
 BAst[2] = DW*.2-DW*.2*sqr(1-image_alpha);
 BAst[3] = 180;
 BAst[0] = BSol[0]+lengthdir_x(BAst[2],BAst[3]);
 BAst[1] = BSol[1]+lengthdir_y(BAst[2],BAst[3]);
-
-BGas[2] = DW*.3-DW*.3*sqr(1-image_alpha);
-BGas[3] = 0;
-BGas[0] = BSol[0]+lengthdir_x(BGas[2],BGas[3]);
-BGas[1] = BSol[1]+lengthdir_y(BGas[2],BGas[3]);
 
 BOrt[2] = DW*.4-DW*.4*sqr(1-image_alpha);
 BOrt[3] = 180;
@@ -104,21 +287,9 @@ BOrt[1] = BSol[1]+lengthdir_y(BOrt[2],BOrt[3]);
 var mx = device_mouse_x_to_gui(0);
 var my = device_mouse_y_to_gui(0);
 
-if BSol[2] {
-    BSol[2] = device_mouse_check_button(0,mb_left)&amp;&amp;point_in_circle(mx,my,BSol[0],BSol[1],24);
-    if !device_mouse_check_button(0,mb_left) {To=ini_menuSol;PlaySom(sound1,0,VSom,0)}}
-
-if BTel[4] {
-    BTel[4] = device_mouse_check_button(0,mb_left)&amp;&amp;point_in_circle(mx,my,BTel[0],BTel[1],48);
-    if !device_mouse_check_button(0,mb_left) {To=ini_teluricosview;PlaySom(sound1,0,VSom,0)}}
-
 if BAst[4] {
     BAst[4] = device_mouse_check_button(0,mb_left)&amp;&amp;point_in_circle(mx,my,BAst[0],BAst[1],48);
     if !device_mouse_check_button(0,mb_left) {To=ini_guicinturao;PlaySom(sound1,0,VSom,0)}}
-
-if BGas[4] {
-    BGas[4] = device_mouse_check_button(0,mb_left)&amp;&amp;point_in_circle(mx,my,BGas[0],BGas[1],48);
-    if !device_mouse_check_button(0,mb_left) {To=ini_gasososview;PlaySom(sound1,0,VSom,0)}}
 
 if BOrt[4] {
     BOrt[4] = device_mouse_check_button(0,mb_left)&amp;&amp;point_in_circle(mx,my,BOrt[0],BOrt[1],48);
@@ -129,10 +300,7 @@ if BBack[2] {
     if !device_mouse_check_button(0,mb_left) {instance_create(0,0,io_menu);To=scr_to;PlaySom(sound1,0,VSom,0)}}
 
 if image_alpha == 1 &amp;&amp; device_mouse_check_button_pressed(0,mb_left) {
-    if point_in_circle(mx,my,BSol[0],BSol[1],24) BSol[2] = 1;
-    if point_in_circle(mx,my,BTel[0],BTel[1],48) BTel[4] = 1;
     if point_in_circle(mx,my,BAst[0],BAst[1],48) BAst[4] = 1;
-    if point_in_circle(mx,my,BGas[0],BGas[1],48) BGas[4] = 1;
     if point_in_circle(mx,my,BOrt[0],BOrt[1],48) BOrt[4] = 1;
     if point_in_rectangle(mx,my,BBack[0]-32,BBack[1]-32,BBack[0]+32,BBack[1]+32) BBack[2] = 1;
 }
@@ -168,45 +336,85 @@ if To!=-1 {
           <argument>
             <kind>1</kind>
             <string>draw_set_alpha(image_alpha);
-var s = max(DW/1280,DH/1024);
-draw_background_ext(bg_CRU,DW/2-640*s,DH/2-512*s,s,s,0,-1,image_alpha);
 
-var i, dis, dir;
-for(i=0;i&lt;100;i++){dis=BAst[2]-20+(i mod 20)*2;dir=i*11+BAst[3];draw_sprite_ext(spr_asteroid,0,DW/2+lengthdir_x(dis,dir),DH/2+lengthdir_y(dis,dir),1+BAst[4]/2,1+BAst[4]/2,0,-1,image_alpha)};
-for(i=0;i&lt;150;i++){dis=BOrt[2]-20+(i mod 20)*2;dir=i*11+BOrt[3];draw_sprite_ext(spr_asteroid,0,DW/2+lengthdir_x(dis,dir),DH/2+lengthdir_y(dis,dir),1+BOrt[4]/2,1+BOrt[4]/2,0,-1,image_alpha)};
+if BACircle(BSol[0],BSol[1],BSol[2],"",c_orange,24,-image_index){if Foco==0Foco=-1else Foco=0};
+dra_planet(BSol[0],BSol[1],BSol[2]*.92,1,image_index,0,soi_sol.Textura);
+draw_text(BSol[0],BSol[1]+BSol[2]+16,"Sol");
 
-draw_sprite_ext(spr_sol,0,BSol[0],BSol[1],1+BSol[2]/8,1+BSol[2]/8,image_index,-1,image_alpha);
 draw_set_colour(8404736);
 var r = DW/12;
-DrawCircle(BTel[0],BTel[1],56+8*BTel[4],16743936,16743936,image_alpha,image_alpha,24,56+8*BTel[4]);
-DrawCircle(BTel[0],BTel[1],56+8*BTel[4],8404736,8404736,image_alpha,image_alpha,24,8+4*BTel[4]);
 DrawCircle(BAst[0],BAst[1],64+8*BAst[4],16743936,16743936,image_alpha,image_alpha,24,64+8*BAst[4]);
 DrawCircle(BAst[0],BAst[1],64+8*BAst[4],8404736,8404736,image_alpha,image_alpha,24,8+4*BAst[4]);
-DrawCircle(BGas[0],BGas[1],56+8*BGas[4],16743936,16743936,image_alpha,image_alpha,24,56+8*BGas[4]);
-DrawCircle(BGas[0],BGas[1],56+8*BGas[4],8404736,8404736,image_alpha,image_alpha,24,8+4*BGas[4]);
 DrawCircle(BOrt[0],BOrt[1],48+8*BOrt[4],16743936,16743936,image_alpha,image_alpha,24,48+8*BOrt[4]);
 DrawCircle(BOrt[0],BOrt[1],48+8*BOrt[4],8404736,8404736,image_alpha,image_alpha,24,8+4*BOrt[4]);
-draw_text(BTel[0],BTel[1],"Telúricos");
 draw_text(BAst[0],BAst[1],"Asteroides");
-draw_text(BGas[0],BGas[1],"Gasosos");
 draw_text(BOrt[0],BOrt[1],"Oort");
 draw_set_colour(c_white);
 
-draw_primitive_begin(pr_trianglefan);
-draw_vertex_colour(0,80,2100224,image_alpha);
-draw_vertex_colour(0,0,2100224,image_alpha);
-draw_vertex_colour(DW,0,2100224,image_alpha);
-draw_vertex_colour(DW,80,2100224,image_alpha);
-draw_vertex_colour(DW,112,2100224,0);
-draw_vertex_colour(0,112,2100224,0);
+draw_primitive_begin(pr_trianglefan);//2100224
+draw_vertex_colour(0,80,3937337,image_alpha);
+draw_vertex_colour(0,0,3937337,image_alpha);
+draw_vertex_colour(DW,0,3937337,image_alpha);
+draw_vertex_colour(DW,80,3937337,image_alpha);
+draw_vertex_colour(DW,DH*.3,3937337,0);
+draw_vertex_colour(0,DH*.3,3937337,0);
 draw_primitive_end();
 
-draw_text(DW/2,40,"Este é o Sistema Solar");
-draw_set_font(calibri11);
-draw_text_ext(DW/2,64,"O Sistema Solar é dividido em cinco partes: o Sol, os Planetas Telúricos, o Cinturão de Asteróides, os Planetas Gasosos e a Nuvem de Oort",16,DW*.8);
-draw_set_font(arialbold12);
+dra_submenu(SMT);
+dra_submenu(SMG);
 
 draw_sprite_ext(spr_back,0,BBack[0],BBack[1],1+BBack[2]/5,1+BBack[2]/5,0,-1,image_alpha);
+
+draw_set_colour(c_silver);
+draw_text(DW-256,DH-32,"Representação meramente ilustrativa:#A representação acima não está em escala*");
+draw_set_colour(c_white);
+draw_set_alpha(1);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>cam3d_set_projection(Camera);
+with(soi_father) d3d_draw_ellipsoid(x-Raio,y-Raio,z-Raio,x+Raio,y+Raio,z+Raio,Textura,1,1,24);
+
+draw_set_colour(c_.myblue);
+with(soi_teluricosfather) {
+    if other.Foco==-1||other.Foco==1||other.Foco==Pos+1 {
+        d3d_primitive_begin(pr_linestrip);
+        for (var i=0; i&lt;Efs; i++) {if Ef_x[i]==0&amp;&amp;Ef_y[i]==0 continue; d3d_vertex(Ef_x[i],Ef_y[i],Ef_z[i])}
+        d3d_primitive_end();
+    }
+}
+
+draw_set_colour(c_aqua);
+with(soi_gasososfather) {
+    if other.Foco==-1||other.Foco==6||other.Foco==Pos+1 {
+        d3d_primitive_begin(pr_linestrip);
+        for (var i=0; i&lt;Efs; i++) {
+            if Ef_x[i]==0&amp;&amp;Ef_y[i]==0 continue;
+            d3d_vertex(Ef_x[i],Ef_y[i],Ef_z[i]);
+        }
+        d3d_primitive_end();
+    }
+}
+draw_set_colour(c_white);
 </string>
           </argument>
         </arguments>

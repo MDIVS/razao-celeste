@@ -59,23 +59,54 @@ Erros = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>Raio += tinc(Raio,Raio_to/10,Raio_to);
+            <string>Raio += (Raio_to-Raio)/10;
 
-for (var i=0; i&lt;5; i++) {
-    if device_mouse_check_button_pressed(i,mb_left)&amp;&amp;point_in_circle(device_mouse_x_to_gui(i),device_mouse_y_to_gui(i),x,y,Raio) {Drag = 1; DeviceDrag = i};
+if os_type==os_android {
+    var i, pc;
+    for (i=0; i&lt;5; i++) {
+        pc = point_in_circle(device_mouse_x_to_gui(i),device_mouse_y_to_gui(i),x,y,Raio);
+        if device_mouse_check_button_pressed(i,mb_left)&amp;&amp;pc {Drag = 1; DeviceDrag = i};
+    }
+} else if os_type==os_windows {
+    var i=id, key=keyboard_key, pc=point_in_circle(device_mouse_x_to_gui(0),device_mouse_y_to_gui(0),x,y,Raio);
+    if pc {
+        if mouse_check_button_pressed(mb_left) {Drag = 1; DeviceDrag = 0};
+        var key = "";
+        if keyboard_check_pressed(ord("A")) key="A"
+        else if keyboard_check_pressed(ord("B")) key="B"
+        else if keyboard_check_pressed(ord("C")) key="C"
+        else if keyboard_check_pressed(ord("D")) key="D";
+        
+        if key!="" {
+            with(obj_quiz_alternativa) {
+                if Nome==key {
+                    with(obj_quiz_alternativa) Selecionado[i.N] = 0;
+                    Selecionado[i.N]=1;
+                    SelecionadoId[i.N]=i;
+                    PlaySom(sound1,0,VSom,0);
+                }
+            }
+        } else if keyboard_check_pressed(vk_space) {
+            with(obj_quiz_alternativainicial) {
+                Selecionado[i.N]=1;
+                SelecionadoId[i.N]=i;
+                PlaySom(sound1,0,VSom,0);
+            }
+        }
+    }
 }
 
 if Drag {
-    Raio_to = 96;
+    Raio_to = DW/20;
     x = device_mouse_x_to_gui(DeviceDrag);
     y = device_mouse_y_to_gui(DeviceDrag);
     Drag = device_mouse_check_button(DeviceDrag,mb_left);
     depth = -11;
 } else {
-    Raio_to = 64;
+    Raio_to = DW/40;
     if FixPos {
-        x += tinc(x,DW/10,Fix_x);
-        y += tinc(y,DW/10,Fix_y);
+        x += (Fix_x-x)/10;
+        y += (Fix_y-y)/10;
     }
     depth = -10;
 }
@@ -101,17 +132,16 @@ if Drag {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>DrawCircle(x,y,Raio*.8,image_blend,image_blend,image_alpha,image_alpha,24,Raio*.8);
-DrawCircle(x,y,Raio,image_blend,image_blend,image_alpha,0,24,Raio*.2);
-draw_sprite_ext(spr_simbols,N,x,y,Raio/48,Raio/48,image_angle,image_blend,image_alpha);
+            <string>draw_sprite_ext(spr_simbols,N,x,y,Raio/32,Raio/32,image_angle,image_blend,image_alpha);
 draw_text(x,y+Raio-16,Nome);
 
 var ww = DW-64;
+var par = N mod 2;
 if Nothers&gt;1 ww = DW/2-32;
-var x1 = 16+DW/2*(N mod 2);
-var y1 = 32*ceil((N+1)/2);
+var x1 = 16+DW/2*(par);
+var y1 = 24*ceil((N+1)/2)-16;
 var x2 = x1+ww;
-var y2 = 32*ceil((N+1)/2)+16;
+var y2 = 24*ceil((N+1)/2)+20-16;
 var pw = (x2-x1)/Bar_repeat;
 
 draw_set_alpha(1);

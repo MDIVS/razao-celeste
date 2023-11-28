@@ -8,24 +8,22 @@
   <isometric>0</isometric>
   <speed>30</speed>
   <persistent>0</persistent>
-  <colour>2101248</colour>
+  <colour>2097168</colour>
   <showcolour>-1</showcolour>
   <code>if instance_exists(o_intro) exit;
 if instance_exists(sy) {instance_create(0,0,io_menu); exit};
 randomize();
 
 instance_create(0,0,o_intro);
-
 enum c_ {
     darkblue = 1048576,
     skyblue = 16744448,
     pink = 8339711,
     whitepink = 11108351,
     dkdkgray = 1315860,
-    myblue = 16743936
+    myblue = 16743936,
+    myblue2 = 16752192
 }
-
-AdColony_Init("appb9aacd8becb94d5390","vzcd355909b6f34e6695","");
 gml_release_mode(true);
 
 globalvar M3D_ESFERA, M3D_FOBOS, M3D_DEIMOS;

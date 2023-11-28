@@ -1,0 +1,14 @@
+var ic = instance_create(DW/5*1,DH/2,obj_quiz_alternativa);
+ic.Correta = 0;
+ic.Txt = "Júpiter";
+ic = instance_create(DW/5*2,DH/2,obj_quiz_alternativa);
+ic.Correta = 0;
+ic.Txt = "Marte";
+ic = instance_create(DW/5*3,DH/2,obj_quiz_alternativa);
+ic.Correta = 1;
+ic.Txt = "Vênus";
+ic = instance_create(DW/5*4,DH/2,obj_quiz_alternativa);
+ic.Correta = 0;
+ic.Txt = "Saturno";
+ic = instance_create(DW/2,DH/4,obj_quiz_confirmar);
+ic.Txt = "O mais brilhante dos planetas. Seu ano dura 225 dias terrestres e seu dia dura quase 243 dias terrestres. É rochoso. Volume quase igual ao da Terra. É o mais quente dos planetas. Não tem luas. Qual o nome deste planeta?";
